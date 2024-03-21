@@ -1,0 +1,28 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+        <h1><span>{{ node.title.value |first }}</span>{{ node.title.value |slice(1) }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--par">
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h4>
+          Intro
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="project-intro">
+        <div class="textfield bg--3">
+          <h3>{{ node.field_intro.value | raw }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% include directory ~ '/templates/content/partials/paragraphs.html.twig' %}

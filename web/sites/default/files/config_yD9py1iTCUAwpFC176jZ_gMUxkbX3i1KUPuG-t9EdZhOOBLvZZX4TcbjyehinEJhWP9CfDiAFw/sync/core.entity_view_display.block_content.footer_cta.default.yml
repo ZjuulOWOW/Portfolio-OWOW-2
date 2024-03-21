@@ -1,0 +1,13 @@
+uuid: 18fb11e3-172c-4710-8065-3b2e1827e536
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_cta
+id: block_content.footer_cta.default
+targetEntityType: block_content
+bundle: footer_cta
+mode: default
+content: {  }
+hidden:
+  langcode: true

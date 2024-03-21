@@ -1,0 +1,68 @@
+uuid: 9804020b-f75f-48b5-8e68-673f4ee9bc9f
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.project.field_cmd_methods
+    - field.field.node.project.field_content
+    - field.field.node.project.field_intro
+    - field.field.node.project.field_jumbo
+    - field.field.node.project.field_leerdoelen
+    - node.type.project
+  module:
+    - entity_reference_revisions
+    - user
+id: node.project.default
+targetEntityType: node
+bundle: project
+mode: default
+content:
+  field_cmd_methods:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_content:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_intro:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_jumbo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_leerdoelen:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

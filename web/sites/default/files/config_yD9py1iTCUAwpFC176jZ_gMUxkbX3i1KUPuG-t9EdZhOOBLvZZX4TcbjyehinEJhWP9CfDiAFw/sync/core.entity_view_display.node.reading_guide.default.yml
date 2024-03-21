@@ -1,0 +1,39 @@
+uuid: 0a3d600f-2c7d-4d0d-bf98-dd27f5ae0f41
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.reading_guide.field_content
+    - field.field.node.reading_guide.field_intro
+    - node.type.reading_guide
+  module:
+    - entity_reference_revisions
+    - user
+id: node.reading_guide.default
+targetEntityType: node
+bundle: reading_guide
+mode: default
+content:
+  field_content:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_intro:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

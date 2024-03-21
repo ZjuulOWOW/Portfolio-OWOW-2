@@ -1,0 +1,57 @@
+<header>
+  {% set items = simplify_menu('header') %}
+  <div class="container-fluid">
+    <div class="row nav">
+      <div class="nav-col nav-brand">
+        <a class="btn btn-primary" href="./home">
+          Zjuul Rovers
+        </a>
+      </div>
+      <div class="nav-col nav-brand nav-logo">
+        <a class="btn btn-primary" href="./home">
+          <img src="./themes/custom/custom_bootstrap_sass/images/logo.svg" alt="" class="logo noline">
+        </a>
+      </div>
+      <div class="nav-col nav-links">
+        <a role="button" class="btn btn-primary btn-arrow nav-cta" href="{{ items.menu_tree.0.url }}">
+          {{ items.menu_tree.0.text }}
+        </a>
+        <a role="button" class="btn btn-primary nav-menu-btn noline">
+          <i class="bi bi-list nav-menu-icon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="menu">
+  <div class="container menu-container">
+    <div class="row nav">
+      <div class="nav-col nav-brand">
+        <a class="btn nav-logo nav-logo--alt" href="./home">
+          <h4>
+            Zjuul Rovers
+          </h4>
+        </a>
+      </div>
+      <div class="nav-col nav-links">
+        <a role="button" class="btn btn-secondary btn-arrow" href="{{ items.menu_tree.0.url }}">
+          {{ items.menu_tree.0.text }}
+        </a>
+        <a role="button" class="btn btn-primary nav-menu-btn">
+          <i class="bi bi-list nav-menu-icon"></i>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="menu-links">
+        {{ page.primary_menu }}
+      </div>
+      <div class="menu-footer">
+        <p>2023 © All rights reserved</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mouse-overlay">
+  <i class="bi bi-eye-fill mouse-overlay--eye"></i>
+</div>

@@ -1,0 +1,11 @@
+uuid: 2507c37f-6b42-49c4-8634-8bb84c8683cd
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.reading_guide
+id: node.reading_guide
+target_entity_type_id: node
+target_bundle: reading_guide
+default_langcode: site_default
+language_alterable: false

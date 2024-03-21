@@ -1,0 +1,70 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a href="./projects">
+          < Back to projects
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1 class="project-title"><span>{{ node.title.value |first }}</span>{{ node.title.value |slice(1) }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 position-relative">
+        <img src="{{ node.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="" class="landing-img paralax">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--par">
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h4>
+          Intro
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="project-intro">
+        <div class="textfield bg--3">
+          <h3>{{ node.field_intro.value | raw }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--par">
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h4>
+          CMD methods
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cmd-methods">
+        {% for paragraph in node.field_cmd_methods %}
+        {% set cat = paragraph.entity.field_category.value %}
+        {% set method = paragraph.entity.field_method.value %}
+        <div class="cmd-method">
+          <div class="textfield bg--3">
+            <div class="cmd-method-header">
+              <img class="cmd-method-logo" src="./themes/custom/custom_bootstrap_sass/images/logo-{{ cat | lower }}.png" alt="">
+              <h5 class="m-0" style="color: var(--{{ cat | lower}})">{{ method }}</h5>
+            </div>
+            <div class="cmd-method-body">
+              {{ paragraph.entity.field_toelichting.value | raw }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% include directory ~ '/templates/content/partials/paragraphs.html.twig' %}

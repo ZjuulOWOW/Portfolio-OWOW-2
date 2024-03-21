@@ -1,0 +1,27 @@
+uuid: 480e419c-1b17-4760-983c-b55abe6c57e1
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.home.field_cta
+    - field.field.node.home.field_intro
+    - field.field.node.home.field_jumbo
+    - node.type.home
+  module:
+    - user
+id: node.home.teaser
+targetEntityType: node
+bundle: home
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_cta: true
+  field_intro: true
+  field_jumbo: true
+  langcode: true

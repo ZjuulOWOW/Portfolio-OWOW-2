@@ -1,0 +1,23 @@
+uuid: 883dd87c-b6c3-4553-80c3-2d930e98ab57
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_button
+    - paragraphs.paragraphs_type.button
+  module:
+    - link
+id: paragraph.button.field_button
+field_name: field_button
+entity_type: paragraph
+bundle: button
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,20 @@
+uuid: 06143c46-919f-4941-a4f2-1057bf97b7e7
+langcode: en-gb
+status: true
+dependencies:
+  theme:
+    - custom_bootstrap_sass
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: custom_bootstrap_sass_page_title
+theme: custom_bootstrap_sass
+region: top_header
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

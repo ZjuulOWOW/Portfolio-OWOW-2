@@ -1,0 +1,24 @@
+uuid: bdea806e-5c37-4ad0-b0f9-0d5bd1f4ca7e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - views.view.projects
+  module:
+    - views
+  theme:
+    - custom_bootstrap_sass
+id: custom_bootstrap_sass_views_block__projects_block_2
+theme: custom_bootstrap_sass
+region: views
+weight: 0
+provider: null
+plugin: 'views_block:projects-block_2'
+settings:
+  id: 'views_block:projects-block_2'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

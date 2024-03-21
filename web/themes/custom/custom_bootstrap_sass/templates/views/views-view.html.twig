@@ -62,7 +62,7 @@
   {% endif %}
 
   {% if rows %}
-    <div class="view-content">
+    <div class="view-content row">
       {{ rows }}
     </div>
   {% elseif empty %}
@@ -88,8 +88,8 @@
     </div>
   {% endif %}
   {% if feed_icons %}
-{#    <div class="feed-icons">#}
-{#      {{ feed_icons }}#}
-{#    </div>#}
+    <div class="feed-icons">
+      {{ feed_icons }}
+    </div>
   {% endif %}
 </div>

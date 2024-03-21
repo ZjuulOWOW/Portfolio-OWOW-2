@@ -1,0 +1,19 @@
+uuid: 1e61a529-ce26-40bc-9a82-be386e970d4b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_method
+    - paragraphs.paragraphs_type.method
+id: paragraph.method.field_method
+field_name: field_method
+entity_type: paragraph
+bundle: method
+label: Method
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

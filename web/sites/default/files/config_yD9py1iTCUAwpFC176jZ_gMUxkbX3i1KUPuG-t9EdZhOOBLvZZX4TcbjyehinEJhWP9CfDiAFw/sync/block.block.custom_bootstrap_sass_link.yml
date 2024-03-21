@@ -1,0 +1,25 @@
+uuid: 22316524-0f78-4d06-baf9-f002eb81a80f
+langcode: en-gb
+status: true
+dependencies:
+  content:
+    - 'block_content:footer_link:86688317-6808-4583-87d1-099fe9545de6'
+  module:
+    - block_content
+  theme:
+    - custom_bootstrap_sass
+id: custom_bootstrap_sass_link
+theme: custom_bootstrap_sass
+region: footer_first
+weight: 0
+provider: null
+plugin: 'block_content:86688317-6808-4583-87d1-099fe9545de6'
+settings:
+  id: 'block_content:86688317-6808-4583-87d1-099fe9545de6'
+  label: Link
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,11 @@
+uuid: c49e5301-c092-4b6c-afbb-cd0da713a85b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.leerdoelen
+id: taxonomy_term.leerdoelen
+target_entity_type_id: taxonomy_term
+target_bundle: leerdoelen
+default_langcode: site_default
+language_alterable: false

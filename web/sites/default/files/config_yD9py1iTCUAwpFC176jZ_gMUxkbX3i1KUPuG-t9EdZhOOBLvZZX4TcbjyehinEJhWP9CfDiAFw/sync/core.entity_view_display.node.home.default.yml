@@ -1,0 +1,52 @@
+uuid: d804012f-732f-4296-ad86-7dfc898e5f60
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.home.field_cta
+    - field.field.node.home.field_intro
+    - field.field.node.home.field_jumbo
+    - node.type.home
+  module:
+    - link
+    - user
+id: node.home.default
+targetEntityType: node
+bundle: home
+mode: default
+content:
+  field_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_intro:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_jumbo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

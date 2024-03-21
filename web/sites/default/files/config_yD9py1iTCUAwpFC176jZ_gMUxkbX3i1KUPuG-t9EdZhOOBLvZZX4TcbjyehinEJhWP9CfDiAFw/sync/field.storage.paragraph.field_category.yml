@@ -1,0 +1,39 @@
+uuid: b2b87238-4f85-4feb-b7a2-611222a962a0
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_category
+field_name: field_category
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Library
+      label: Library
+    -
+      value: Field
+      label: Field
+    -
+      value: Lab
+      label: Lab
+    -
+      value: Steppingstones
+      label: Steppingstones
+    -
+      value: Workshop
+      label: Workshop
+    -
+      value: Showroom
+      label: Showroom
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

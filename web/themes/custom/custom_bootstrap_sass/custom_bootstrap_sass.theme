@@ -30,3 +30,53 @@ function custom_bootstrap_sass_form_system_theme_settings_alter(&$form, FormStat
     'bg-transparent' => t('Transparent'),
   );
 }
+
+function custom_bootstrap_sass_preprocess_node(&$variables) {
+  // Allowed view modes
+  $view_mode = $variables['view_mode']; // Retrieve view mode
+  $allowed_view_modes = ['full']; // Array of allowed view modes (for performance so as to not execute on unneeded nodes)
+
+  // If view mode is in allowed view modes list, pass to THEME_add_regions_to_node()
+  if(in_array($view_mode, $allowed_view_modes)) {
+    // Allowed regions (for performance so as to not execute for unneeded region)
+    $allowed_regions = ['views', 'primary_menu', 'footer_first'];
+    custom_bootstrap_sass_add_regions_to_node($allowed_regions, $variables);
+  }
+
+  // Load the current user.
+	// $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+}
+
+function custom_bootstrap_sass_add_regions_to_node($allowed_regions, &$variables) {
+  // Retrieve active theme
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+
+  // Retrieve theme regions
+  $available_regions = system_region_list($theme, 'REGIONS_ALL');
+
+  // Validate allowed regions with available regions
+  $regions = array_intersect(array_keys($available_regions), $allowed_regions);
+
+  // For each region
+  foreach ($regions as $key => $region) {
+
+    // Load region blocks
+	$blocks = \Drupal::entityTypeManager()->getStorage('block')->loadByProperties(array('theme' => $theme, 'region' => $region));
+
+    // Sort ‘em
+    uasort($blocks, 'Drupal\block\Entity\Block::sort');
+
+    // Capture viewable blocks and their settings to $build
+    $build = array();
+    foreach ($blocks as $key => $block) {
+      if ($block->access('view')) {
+	      $builder = \Drupal::entityTypeManager()->getViewBuilder('block');
+		$build[$key] = $builder->view($block, 'block');
+      }
+    }
+
+    // Add build to region
+    $variables[$region] = $build;
+  }
+}

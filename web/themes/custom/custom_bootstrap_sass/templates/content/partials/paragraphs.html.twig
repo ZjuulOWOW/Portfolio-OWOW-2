@@ -1,4 +1,5 @@
 {% if node.field_content %}
+  {% set title_index = 1 %}
   {% for paragraph in node.field_content %}
     {% set paragraphType = paragraph.entity.type.value.0.target_id %}
 
@@ -7,6 +8,18 @@
     {% else %}
       {% if paragraphType == 'text' %}
         {% include directory ~ '/templates/content/partials/paragraphs/text.html.twig' %}
+        {% if paragraph.entity.field_title.value %}
+          {% set title_index = title_index + 1 %}
+          {% if title_index > 4 %}
+            {% set title_index = 1 %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      {% if paragraphType == 'media' %}
+        {% include directory ~ '/templates/content/partials/paragraphs/media.html.twig' %}
+      {% endif %}
+      {% if paragraphType == 'button' %}
+        {% include directory ~ '/templates/content/partials/paragraphs/button.html.twig' %}
       {% endif %}
     {% endif %}
   {% endfor %}

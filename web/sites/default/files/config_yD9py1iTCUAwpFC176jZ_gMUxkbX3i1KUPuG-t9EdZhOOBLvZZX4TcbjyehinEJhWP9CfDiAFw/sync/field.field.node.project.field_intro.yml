@@ -1,0 +1,19 @@
+uuid: 4d12225d-73dc-4bb1-b6c7-b8d4cf9f31e2
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro
+    - node.type.project
+id: node.project.field_intro
+field_name: field_intro
+entity_type: node
+bundle: project
+label: Intro
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

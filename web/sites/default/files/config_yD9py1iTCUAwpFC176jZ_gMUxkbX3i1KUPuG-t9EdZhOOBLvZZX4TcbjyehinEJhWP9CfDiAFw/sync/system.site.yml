@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en-gb
+uuid: 6e1e4692-d5f4-4b6f-afeb-3593f8fe5b03
+name: 'Portfolio Zjuul Rovers'
+mail: zjuul2003@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en-gb

@@ -1,0 +1,21 @@
+uuid: 3a92ecd1-963d-4e41-893a-64a72849d204
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_method
+field_name: field_method
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

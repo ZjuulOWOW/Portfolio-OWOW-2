@@ -43,20 +43,153 @@
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-
-  </head>
+      <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+      <script defer>
+        //Lenis
+        const lenis = new Lenis(
+        )
+        function raf(time) {
+          lenis.raf(time)
+          requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+      </script>
+      </head>
   <body{{ attributes.addClass(body_classes) }}>
-    <div class="page-wrapper">
-	    <a href="#main-content" class="visually-hidden focusable skip-link">
-	      {{ 'Skip to main content'|t }}
-	    </a>
+    <div class="page-wrapper" id="smooth-wrapper">
+      <div id="smooth-content">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+          {{ 'Skip to main content'|t }}
+        </a>
 
-	    {{ page_top }}
-	    {{ page }}
-	    {{ page_bottom }}
+        {{ page_top }}
+        {{ page }}
+        {{ page_bottom }}
+      </div>
     </div>
 	<js-bottom-placeholder token="{{ placeholder_token|raw }}">
   </body>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.66/build/spline-viewer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
 
+    //Logo
+    var vh = window.innerHeight
+    var tl = gsap.timeline()
 
+    tl.to('.logo--3d', {
+      scrollTrigger: {
+        trigger: '.logo--3d',
+        start: 'top',
+        scrub: 1
+      },
+      y: vh + 200,
+      ease: "none"
+    })
+
+    //Text reveal
+    var textReveal = document.getElementById('js-text-reveal')
+      var characters = textReveal.innerHTML.split('')
+      textReveal.innerHTML = ''
+      characters.forEach(function (el) {
+        var span = document.createElement('span')
+        span.classList.add('reveal-span')
+        var content = document.createTextNode(el)
+        span.appendChild(content)
+        textReveal.appendChild(span)
+      })
+
+    gsap.to('.reveal-span', {
+      scrollTrigger: {
+        trigger: '.about',
+        start: '-100px center',
+        end: 'bottom center',
+        scrub: 1
+      },
+      opacity: 1,
+      stagger: 1,
+    })
+
+    gsap.to('.js-about-el', {
+      scrollTrigger: {
+        trigger: '.about',
+        start: '-500px 200px',
+        end: 'bottom 200px',
+        scrub: 1
+      },
+      y: gsap.utils.wrap(['+=160', '+=320', '+=80']),
+      rotate: gsap.utils.wrap(['180deg', '90deg', '0'])
+    })
+
+    //Service
+    gsap.from('.hoop--service', {
+      scrollTrigger: {
+        trigger: '.section--service',
+        start: '-500px center',
+        end: '1000px center',
+        scrub: true,
+        markers: true
+      },
+      y: 600
+    })
+
+    gsap.to('.service-img--star', {
+      scrollTrigger: {
+        trigger: '.section--service',
+        start: '-100px center',
+        end: 'bottom center',
+        scrub: 1
+      },
+      rotate: 90
+    })
+
+    //view home image carousel
+    $('.home-projects .views-row').mouseenter(function(){
+      $('.home-projects-img .view-content').css('top', (-600 * $(this).index() + "px"))
+    })
+
+    //mouse overlay
+    $('body').mousemove(function( event ) {
+      var styles_img = {
+        "left" : event.pageX - 60,
+        "top" : event.pageY - 60
+      }
+      $('.mouse-overlay').css(styles_img)
+    })
+    $('.customCursor').hover(function (){
+      $('.mouse-overlay--eye').toggleClass('is-visable')
+    })
+
+    //menu //jQuery deleten
+    $('.menu-link').each(function (index) {
+      var characters = $(this).text().split("")
+      $this = $(this)
+      $this.empty()
+      $.each(characters, function (i, el) {
+        $this.append('<span class="letter">' + el + '</span>')
+      })
+    })
+
+    var tween = gsap.fromTo(
+      ".menu-link>span",
+      {
+        opacity: 0,
+        y: -100
+      },
+      {
+        opacity: 1,
+        duration: .5,
+        stagger: .02,
+        y: 0,
+        easing: 'ease-in',
+      })
+    tween.reverse()
+
+    $('.nav-menu-btn').click(function(){
+      $('.menu').toggleClass("is-active")
+      $("html, body").animate({ scrollTop: 0, height: "100vh" }, "slow")
+      tween.play()
+    })
+  </script>
 </html>

@@ -1,0 +1,25 @@
+uuid: 2d2f25d9-addc-4d0b-b837-53c6fcbadb6f
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.reading_guide.field_content
+    - field.field.node.reading_guide.field_intro
+    - node.type.reading_guide
+  module:
+    - user
+id: node.reading_guide.teaser
+targetEntityType: node
+bundle: reading_guide
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content: true
+  field_intro: true
+  langcode: true

@@ -1,10 +1,13 @@
 /* VARIABLES */
 
 // colors
-$primary-shade: rgb(255, 78, 46);
+$primary: #F7F4EF;
+$secondary: #252525;
+$thirtairy: #E6E0D6;
+$primary-shade: $secondary;
 $primary-light: lighten($primary-shade, 37%);
 $primary-dark: darken($primary-shade, 12%);
-$accent-shade: #0079C0;
+$accent-shade: $primary;
 $accent-light: lighten($accent-shade, 37%);
 $accent-dark: darken($accent-shade, 12%);
 // Reassign color vars to semantic color scheme
@@ -25,14 +28,14 @@ $brand-inverse: $primary-shade;
 // Body
 //
 // Settings for the `<body>` element.
-$body-bg: $white;
-$body-color: $gray-800;
-$inverse-bg: $primary-shade;
-$inverse-color: $white;
+$body-bg: $secondary;
+$body-color: $primary;
+$inverse-bg: $primary;
+$inverse-color: $secondary;
 // Links
 //
 // Style anchor elements.
-$link-color: $accent-shade;
+$link-color: $secondary;
 $link-decoration: none;
 $link-hover-color: $accent-dark;
 $link-hover-decoration: underline;
@@ -45,3 +48,13 @@ $enable-shadows: false;
 $enable-gradients: false;
 // Breadcrumbs (Works only on Bootstrap 5+)
 // $breadcrumb-divider: quote(">");
+
+$border-radius: 12px;
+
+$container-max-widths: ( //padding: 16px * 2, max - 32px
+  sm: 540px,
+  md: 736px,
+  lg: 960px,
+  xl: 1168px,
+  xxl: 1368px
+);

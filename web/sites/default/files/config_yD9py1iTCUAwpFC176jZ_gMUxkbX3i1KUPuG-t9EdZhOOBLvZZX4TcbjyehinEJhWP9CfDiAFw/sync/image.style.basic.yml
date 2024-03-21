@@ -1,0 +1,7 @@
+uuid: 21a8dcbf-4af2-4c98-948e-1c62f0b7ba68
+langcode: en-gb
+status: true
+dependencies: {  }
+name: basic
+label: Basic
+effects: {  }

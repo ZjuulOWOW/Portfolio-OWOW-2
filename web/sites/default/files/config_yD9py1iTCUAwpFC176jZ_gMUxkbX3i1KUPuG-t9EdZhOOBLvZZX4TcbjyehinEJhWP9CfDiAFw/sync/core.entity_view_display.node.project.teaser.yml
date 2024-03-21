@@ -1,0 +1,31 @@
+uuid: ba9e867a-94dc-4e16-8259-d7586f518c9d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.project.field_cmd_methods
+    - field.field.node.project.field_content
+    - field.field.node.project.field_intro
+    - field.field.node.project.field_jumbo
+    - field.field.node.project.field_leerdoelen
+    - node.type.project
+  module:
+    - user
+id: node.project.teaser
+targetEntityType: node
+bundle: project
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_cmd_methods: true
+  field_content: true
+  field_intro: true
+  field_jumbo: true
+  field_leerdoelen: true
+  langcode: true
