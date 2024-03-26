@@ -1,33 +1,20 @@
 <footer>
   {% set items = simplify_menu('footer') %}
-  <div class="container footer-container">
-    <div class="row">
-      <div class="col">
-        <h4>
-          Footer
-        </h4>
-      </div>
-    </div>
+  <div class="container-fluid footer-container">
     <div class="row">
       <div class="footer-title">
-        <h2>
-          <span>{{ items.menu_tree.0.text |first }}</span>{{ items.menu_tree.0.text |slice(1) }}</h1>
-        </h2>
+        <h1>
+          {{ items.menu_tree.0.text }}
+        </h1>
       </div>
-      <div class="footer-cta">
-        <a href="{{ items.menu_tree.0.url }}" class="footer-link">
-          <img src="./themes/custom/custom_bootstrap_sass/images/circ-text-1.png" class="text--circ footer-text--circ" alt="">
-          <i class="bi bi-arrow-right-short footer-link-arrow"></i>
-        </a>
-      </div>
+{#      <div class="footer-cta">#}
+{#        <a href="{{ items.menu_tree.0.url }}" class="footer-link">#}
+{#          <i class="bi bi-arrow-right-short footer-link-arrow"></i>#}
+{#        </a>#}
+{#      </div>#}
     </div>
-    <div class="row">
-      <div class="footer-brand">
-        <h5>Zjuul Rovers</h5>
-      </div>
-      <div class="footer-cr">
-        <p>2023 © All rights reserved</p>
-      </div>
-    </div>
+    <video class="logo--3d footer-logo" height="1000" autoplay muted loop>
+      <source src="./themes/custom/custom_bootstrap_sass/images/3dlogo.mov" type="video/mp4" >
+    </video>
   </div>
 </footer>

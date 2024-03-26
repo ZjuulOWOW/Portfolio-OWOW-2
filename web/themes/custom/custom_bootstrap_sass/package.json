@@ -17,12 +17,13 @@
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.1.0",
-    "bootstrap-icons": "^1.11.3"
+    "bootstrap-icons": "^1.11.3",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0"
   },
   "devDependencies": {
     "browser-sync": "^2.24.7",
     "del": "^3.0.0",
-    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "3.9.4",
     "gulp-concat": "^2.6.1",
@@ -37,6 +38,6 @@
     "merge-stream": "^1.0.1",
     "postcss-inline-svg": "^4.1.0",
     "postcss-pxtorem": "^5.1.1",
-    "sass": "^1.45.0"
+    "sass": "^1.72.0"
   }
 }

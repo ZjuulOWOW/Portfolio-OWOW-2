@@ -77,14 +77,17 @@
     //Logo
     var vh = window.innerHeight
     var tl = gsap.timeline()
+    var logo = document.getElementById('js-logo')
 
-    tl.to('.logo--3d', {
+    tl.to(logo, {
       scrollTrigger: {
         trigger: '.logo--3d',
         start: 'top',
-        scrub: 1
+        scrub: 1,
+        end: "+=500",
       },
       y: vh + 200,
+      x: 200,
       ease: "none"
     })
 
@@ -129,9 +132,21 @@
         start: '-500px center',
         end: '1000px center',
         scrub: true,
-        markers: true
       },
       y: 600
+    })
+
+    gsap.from('.service-row', {
+      scrollTrigger: {
+        trigger: '.section--service',
+        start: '-240px center',
+        end: '400px center',
+        scrub: true,
+        markers: true
+      },
+      ease: 'ease-out',
+      x: gsap.utils.wrap(['100%', '-100%']),
+      stagger: 1,
     })
 
     gsap.to('.service-img--star', {
@@ -145,8 +160,29 @@
     })
 
     //view home image carousel
-    $('.home-projects .views-row').mouseenter(function(){
-      $('.home-projects-img .view-content').css('top', (-600 * $(this).index() + "px"))
+    const projects = document.querySelector('.home-projects')
+    const projectRows = document.querySelectorAll('.home-projects .views-row')
+    const projectImgs = document.querySelectorAll('.home-projects-img .views-row')
+
+    projectRows.forEach((el, index) => {
+      el.addEventListener('mouseenter', () => {
+        projectImgs.forEach((img) => {
+          img.classList.remove('active')
+        })
+        gsap.to(logo, {
+          scale: 0
+        })
+        projectImgs[index].classList.add('active')
+      })
+    })
+    projects.addEventListener('mouseleave', () => {
+      projectImgs.forEach((img) => {
+        img.classList.remove('active')
+      })
+      gsap.to(logo, {
+        scale: 1,
+        delay: .4
+      })
     })
 
     //mouse overlay
