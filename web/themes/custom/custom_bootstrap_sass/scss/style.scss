@@ -40,14 +40,25 @@ html,body{
 
 header{
   position: fixed;
-  width: 100%;
   z-index: 9;
-  backdrop-filter: blur(30px)
+  width: 100%;
+  transition: 1s transform;
+  &.collapsed{
+    transform: translate3d(0, calc(-100% - 32px), 0);
+  }
 }
 
-.nav{
+.header-content{
+  @include make-col-ready();
+  @include make-col(10);
+  @include make-col-offset(1);
+  border-radius: 16px;
+  backdrop-filter: blur(30px);
+  border: 1px solid $primary;
+  display: flex;
   padding-top: 16px;
   padding-bottom: 16px;
+  margin-top: 32px;
 }
 
 .nav-brand{
@@ -62,7 +73,8 @@ header{
 }
 
 .logo{
-  height: 80px;
+  height: 48px;
+  border: none;
 }
 
 .nav-links{
@@ -392,6 +404,10 @@ section{
   border-top: 1px solid $primary;
 }
 
+.section--service{
+  margin-top: 400px;
+}
+
 // Paragraphs
 
 .par-text{
@@ -500,11 +516,11 @@ section{
 }
 
 img,
-.simpleParallax,
 iframe{
   border-radius: $border-radius;
   object-fit: cover;
   width: 100%;
+  border: 1px solid $primary;
 }
 
 .landing-img{
@@ -720,10 +736,10 @@ iframe{
 }
 
 .star--3d{
-  position: absolute;
   height: 160px;
   width: 160px;
   object-fit: contain;
+  border: none;
 }
 
 .star--3d-1{
@@ -740,14 +756,13 @@ iframe{
   height: 560px;
   width: 400px;
   object-fit: cover;
-  position: absolute;
   top: 480px;
   right: 240px;
   z-index: -1;
 }
 
-.section--usps{
-  margin-top: 400px;
+.about-el{
+  position: absolute;
 }
 
 .curve{

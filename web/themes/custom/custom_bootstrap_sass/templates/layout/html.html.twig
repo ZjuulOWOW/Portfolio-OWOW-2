@@ -91,7 +91,7 @@
       ease: "none"
     })
 
-    //Text reveal
+    //Text revealf
     var textReveal = document.getElementById('js-text-reveal')
       var characters = textReveal.innerHTML.split('')
       textReveal.innerHTML = ''
@@ -114,7 +114,7 @@
       stagger: 1,
     })
 
-    gsap.to('.js-about-el', {
+    gsap.to('.about-el', {
       scrollTrigger: {
         trigger: '.about',
         start: '-500px 200px',
@@ -134,19 +134,6 @@
         scrub: true,
       },
       y: 600
-    })
-
-    gsap.from('.service-row', {
-      scrollTrigger: {
-        trigger: '.section--service',
-        start: '-240px center',
-        end: '400px center',
-        scrub: true,
-        markers: true
-      },
-      ease: 'ease-out',
-      x: gsap.utils.wrap(['100%', '-100%']),
-      stagger: 1,
     })
 
     gsap.to('.service-img--star', {
@@ -183,6 +170,19 @@
         scale: 1,
         delay: .4
       })
+    })
+
+    var oldScroll
+    const header = document.querySelector('header')
+
+    window.addEventListener('scroll', () =>{
+      if (oldScroll < window.pageYOffset){
+        header.classList.add('collapsed')
+      }
+      else{
+        header.classList.remove('collapsed')
+      }
+      oldScroll = window.scrollY
     })
 
     //mouse overlay
@@ -227,5 +227,6 @@
       $("html, body").animate({ scrollTop: 0, height: "100vh" }, "slow")
       tween.play()
     })
+
   </script>
 </html>
