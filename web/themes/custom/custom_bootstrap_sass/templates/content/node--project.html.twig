@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <h1 class="project-title"><span>{{ node.title.value |first }}</span>{{ node.title.value |slice(1) }}</h1>
+        <h1 class="project-title">{{ node.title.value }}</h1>
       </div>
     </div>
     <div class="row">
@@ -30,9 +30,7 @@
     </div>
     <div class="row">
       <div class="project-intro">
-        <div class="textfield bg--3">
-          <h3>{{ node.field_intro.value | raw }}</h3>
-        </div>
+        <h3 class="reveal">{{ node.field_intro.value | raw }}</h3>
       </div>
     </div>
   </div>
@@ -51,17 +49,17 @@
         {% for paragraph in node.field_cmd_methods %}
         {% set cat = paragraph.entity.field_category.value %}
         {% set method = paragraph.entity.field_method.value %}
-        <div class="cmd-method">
-          <div class="textfield bg--3">
-            <div class="cmd-method-header">
-              <img class="cmd-method-logo" src="./themes/custom/custom_bootstrap_sass/images/logo-{{ cat | lower }}.png" alt="">
-              <h5 class="m-0" style="color: var(--{{ cat | lower}})">{{ method }}</h5>
-            </div>
-            <div class="cmd-method-body">
-              {{ paragraph.entity.field_toelichting.value | raw }}
+          <div class="cmd-method">
+            <div class="cmd-method-content">
+              <div class="cmd-method-header">
+                <img class="cmd-method-logo" src="./themes/custom/custom_bootstrap_sass/images/logo-{{ cat | lower }}.png" alt="">
+                <h5 class="m-0" style="color: var(--{{ cat | lower}})">{{ method }}</h5>
+              </div>
+              <div class="cmd-method-body">
+                {{ paragraph.entity.field_toelichting.value | raw }}
+              </div>
             </div>
           </div>
-        </div>
       {% endfor %}
       </div>
     </div>

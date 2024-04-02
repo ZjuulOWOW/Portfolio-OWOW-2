@@ -1,25 +1,27 @@
 <header>
   {% set items = simplify_menu('header') %}
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="header-content">
-        <div class="nav-col nav-brand">
-          <a class="btn btn-primary" href="./home">
-            Zjuul Rovers
-          </a>
-        </div>
-        <div class="nav-col nav-brand nav-logo">
-          <a class="btn btn-primary noline" href="./home">
-            <img src="./themes/custom/custom_bootstrap_sass/images/logo.svg" alt="" class="logo noline">
-          </a>
-        </div>
-        <div class="nav-col nav-links">
-          <a role="button" class="btn btn-primary btn-arrow nav-cta" href="{{ items.menu_tree.0.url }}">
-            {{ items.menu_tree.0.text }}
-          </a>
-          <a role="button" class="btn btn-primary nav-menu-btn noline">
-            <i class="bi bi-list nav-menu-icon"></i>
-          </a>
+      <div class="col">
+        <div class="header-content">
+          <div class="nav-col nav-brand">
+            <a class="btn btn-primary" href="./home">
+              Zjuul Rovers
+            </a>
+          </div>
+          <div class="nav-col nav-brand nav-logo">
+            <a class="btn btn-primary noline nav-logo-link" href="./home">
+              <img src="./themes/custom/custom_bootstrap_sass/images/logo.svg" alt="" class="logo noline">
+            </a>
+          </div>
+          <div class="nav-col nav-links">
+            <a role="button" class="btn btn-primary btn-arrow nav-cta" href="{{ items.menu_tree.0.url }}">
+              {{ items.menu_tree.0.text }}
+            </a>
+            <a role="button" class="btn btn-primary nav-menu-btn noline">
+              <i class="bi bi-list nav-menu-icon"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>

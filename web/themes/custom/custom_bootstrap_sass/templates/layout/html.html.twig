@@ -69,10 +69,16 @@
     </div>
 	<js-bottom-placeholder token="{{ placeholder_token|raw }}">
   </body>
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.66/build/spline-viewer.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
+
+   // console.log('tst')
+   // import { Application } from '@splinetool/runtime';
+//
+//    const canvas = document.getElementById('js-logo')
+//    const app = new Application(canvas)
+//    app.load('https://prod.spline.design/U2kajozBtuhH3ozm/scene.splinecode');
 
     //Logo
     var vh = window.innerHeight
@@ -92,23 +98,25 @@
     })
 
     //Text revealf
-    var textReveal = document.getElementById('js-text-reveal')
-      var characters = textReveal.innerHTML.split('')
-      textReveal.innerHTML = ''
-      characters.forEach(function (el) {
-        var span = document.createElement('span')
-        span.classList.add('reveal-span')
-        var content = document.createTextNode(el)
-        span.appendChild(content)
-        textReveal.appendChild(span)
+    var textReveal = document.querySelectorAll('.reveal')
+      textReveal.forEach((text) => {
+        var characters = text.innerHTML.split('')
+        text.innerHTML = ''
+        characters.forEach(function (el) {
+          var span = document.createElement('span')
+          span.classList.add('reveal-span')
+          var content = document.createTextNode(el)
+          span.appendChild(content)
+          text.appendChild(span)
+        })
       })
 
     gsap.to('.reveal-span', {
       scrollTrigger: {
-        trigger: '.about',
+        trigger: '.reveal',
         start: '-100px center',
-        end: 'bottom center',
-        scrub: 1
+        end: 'bottom-=240px center',
+        scrub: 1,
       },
       opacity: 1,
       stagger: 1,
@@ -170,19 +178,6 @@
         scale: 1,
         delay: .4
       })
-    })
-
-    var oldScroll
-    const header = document.querySelector('header')
-
-    window.addEventListener('scroll', () =>{
-      if (oldScroll < window.pageYOffset){
-        header.classList.add('collapsed')
-      }
-      else{
-        header.classList.remove('collapsed')
-      }
-      oldScroll = window.scrollY
     })
 
     //mouse overlay

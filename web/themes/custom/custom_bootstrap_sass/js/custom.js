@@ -1,18 +1,13 @@
-/**
- * @file
- * Global utilities.
- *
- */
-(function($, Drupal) {
+ (function($, Drupal) {
 
-  'use strict';
+    'use strict';
 
-  Drupal.behaviors.custom_bootstrap_sass = {
-    attach: function(context, settings) {
+    Drupal.behaviors.custom_bootstrap_sass = {
+      attach: function(context, settings) {
 
-      // Custom code here
+        // Custom code here
 
-    }
-  };
+      }
+    };
 
-})(jQuery, Drupal);
+  })(jQuery, Drupal);
