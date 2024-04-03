@@ -49,7 +49,8 @@ $enable-gradients: false;
 // Breadcrumbs (Works only on Bootstrap 5+)
 // $breadcrumb-divider: quote(">");
 
-$border-radius: 12px;
+$border-radius: 16px;
+$brightness: .6;
 
 $container-max-widths: ( //padding: 16px * 2, max - 32px
   sm: 540px,

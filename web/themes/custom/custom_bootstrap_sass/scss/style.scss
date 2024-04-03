@@ -52,8 +52,7 @@ body.scrolldown header{
 
 .header-content{
   border-radius: 16px;
-  backdrop-filter: blur(30px);
-  border: 1px solid $primary;
+  backdrop-filter: brightness($brightness) blur(20px);
   display: flex;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -336,12 +335,13 @@ footer{
 
 // Typography
 
-h1,
-.menu-link{
+h1{
   line-height: 144px;
   margin-bottom: 0;
-  text-align: center;
+}
 
+.landing-title{
+  text-align: center;
 }
 
 h1, h2, .menu-link{
@@ -525,7 +525,6 @@ iframe{
   border-radius: $border-radius;
   object-fit: cover;
   width: 100%;
-  border: 1px solid $primary;
 }
 
 .landing-img{
@@ -543,20 +542,10 @@ iframe{
 
 .projects{
   .views-row{
-    border-style: solid;
-    border-width: 1px 0 0 0;
-    &:last-of-type{
-      border-width: 1px 0;
-    }
-  }
-}
-
-.home-projects{
-  @include make-col-ready();
-  @include make-col(12);
-  padding: 0;
-  .views-row{
-    border-color: $primary;
+    margin-bottom: 16px;
+    @include make-col-ready();
+    @include make-col(10);
+    @include make-col-offset(1);
   }
 }
 
@@ -575,9 +564,9 @@ iframe{
 .home-project{
   color: $primary;
   height: 200px;
+  backdrop-filter: brightness($brightness);
+  border-radius: $border-radius;
   &:hover {
-    background: $primary;
-    color: $secondary;
   }
 }
 
@@ -689,7 +678,7 @@ iframe{
 .cmd-method-content{
   padding: 32px;
   margin-bottom: 32px;
-  border: 1px solid $primary;
+  backdrop-filter: brightness($brightness);
   border-radius: $border-radius;
 }
 
