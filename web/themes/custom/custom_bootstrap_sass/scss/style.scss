@@ -40,7 +40,7 @@ html,body{
 
 header{
   position: fixed;
-  z-index: 9;
+  z-index: 8;
   width: 100%;
   transition: 1s transform;
   top: 0;
@@ -54,8 +54,7 @@ body.scrolldown header{
   border-radius: 16px;
   backdrop-filter: brightness($brightness) blur(20px);
   display: flex;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px 24px;
   margin-top: 32px;
 }
 
@@ -95,7 +94,7 @@ body.scrolldown header{
 .nav-menu-btn{
   padding: 0 8px;
   width: fit-content;
-  margin-left: 32px;
+  margin-left: 16px;
 }
 
 .noline{
@@ -392,12 +391,17 @@ section{
   margin-top: 240px;
 }
 
+section:first-of-type{
+  margin-top: 0;
+  padding-top: 240px;
+}
+
 .section--landing{
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0;
+  padding-top: 0!important;
 }
 
 .section--media + .section--text{
@@ -510,7 +514,6 @@ section{
 }
 
 .hoop--service{
-  width: 640px;
   height: 100px;
   transform: rotate(-8deg) translateY(40px);
   white-space: nowrap;
@@ -518,6 +521,7 @@ section{
   justify-content: center;
   align-items: center;
   margin-right: 32px;
+  padding: 0 32px;
 }
 
 img,
@@ -636,31 +640,6 @@ iframe{
   font-style: italic;
 }
 
-.customCursor{
-  cursor: none;
-}
-
-.mouse-overlay{
-  height: 120px;
-  width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  pointer-events: none;
-  z-index: 4;
-}
-
-.mouse-overlay--eye{
-  font-size: 0px;
-  transition: font-size .2s;
-  color: $secondary;
-}
-
-.is-visable{
-  font-size: 120px;
-}
-
 .cmd-methods{
   @include make-col-ready();
   @include make-col(10);
@@ -768,7 +747,7 @@ iframe{
 
 .service{
   @include make-col-ready();
-  @include make-col();
+  @include make-col(10);
   display: flex;
   align-items: center;
 }
@@ -788,6 +767,7 @@ iframe{
 
 .service-img{
   height: 120px;
+  width: 240px;
 }
 
 .service-img--star{
@@ -795,4 +775,20 @@ iframe{
   width: 160px;
   height: 160px;
   margin-left: 64px;
+}
+
+.transition{
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: brightness($brightness) blur(80px);
+  position: fixed;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transition-logo{
+  height: 48px;
+  width: 48px;
 }

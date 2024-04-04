@@ -56,7 +56,10 @@
       </script>
       </head>
   <body{{ attributes.addClass(body_classes) }}>
-    <div class="page-wrapper" id="smooth-wrapper">
+  <div class="transition">
+    <img src="./themes/custom/custom_bootstrap_sass/images/logo.svg" alt="" class="transition-logo">
+  </div>
+  <div class="page-wrapper" id="smooth-wrapper">
       <div id="smooth-content">
         <a href="#main-content" class="visually-hidden focusable skip-link">
           {{ 'Skip to main content'|t }}
@@ -72,13 +75,67 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
+    //page transition
+    var href
+    const transition =  document.querySelector('.transition')
+    const transitionLogo = document.querySelector('.transition-logo')
 
-   // console.log('tst')
-   // import { Application } from '@splinetool/runtime';
-//
-//    const canvas = document.getElementById('js-logo')
-//    const app = new Application(canvas)
-//    app.load('https://prod.spline.design/U2kajozBtuhH3ozm/scene.splinecode');
+    document.querySelectorAll('a').forEach((a) =>{
+      a.addEventListener('click', (e)=>{
+        href = a.getAttribute('href')
+        if(href!=null) {
+          e.preventDefault()
+          transition.animate(
+            [
+              {transform: 'translate3D(0,100%,0 )', borderRadius: '50%'},
+              {transform: 'translate3D(0,0,0 )', borderRadius: 0},
+            ],
+            {
+              duration: 500,
+              easing: 'ease-in-out',
+              fill: "forwards"
+            }
+          )
+          transitionLogo.animate(
+            [
+              {transform: 'rotate3d(0, 1, 0, 0)'},
+              {transform: 'rotate3d(0, 1, 0, 360deg)'}
+            ],
+            {
+              duration: 500,
+              fill: "forwards"
+            }
+          )
+          setTimeout(function () {
+            window.location.href = href
+          }, 500)
+        }
+      })
+    })
+
+    window.addEventListener('pageshow', (e)=>{
+      transition.animate(
+        [
+          { transform: 'translate3D(0,0,0 )', borderRadius: '0' },
+          { transform: 'translate3D(0,-100%,0 )', borderRadius: '50%' }
+        ],
+        {
+          duration: 500,
+          easing: 'ease-in-out',
+          fill: 'forwards'
+        }
+      )
+      transitionLogo.animate(
+        [
+          { transform: 'rotate3d(0, 1, 0, 360deg)'},
+          { transform: 'rotate3d(0, 1, 0, 0)'}
+        ],
+        {
+          duration: 500,
+          fill: "forwards"
+        }
+      )
+    })
 
     //Logo
     var vh = window.innerHeight
@@ -97,7 +154,7 @@
       ease: "none"
     })
 
-    //Text revealf
+    //Text reveal
     var textReveal = document.querySelectorAll('.reveal')
       textReveal.forEach((text) => {
         var characters = text.innerHTML.split('')
@@ -178,18 +235,6 @@
         scale: 1,
         delay: .4
       })
-    })
-
-    //mouse overlay
-    $('body').mousemove(function( event ) {
-      var styles_img = {
-        "left" : event.pageX - 60,
-        "top" : event.pageY - 60
-      }
-      $('.mouse-overlay').css(styles_img)
-    })
-    $('.customCursor').hover(function (){
-      $('.mouse-overlay--eye').toggleClass('is-visable')
     })
 
     //menu //jQuery deleten
