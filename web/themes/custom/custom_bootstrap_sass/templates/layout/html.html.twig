@@ -74,7 +74,12 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
   <script>
+    const parallax = document.querySelectorAll('.parallax')
+    new simpleParallax(parallax, {
+    })
+
     //page transition
     var href
     const transition =  document.querySelector('.transition')
@@ -149,9 +154,29 @@
         scrub: 1,
         end: "+=500",
       },
-      y: vh + 200,
+      y: vh + 300,
       x: 200,
       ease: "none"
+    })
+
+    //Landing intro
+    window.addEventListener('load', () => {
+      gsap.from('.project-title, .landing-title--1', {
+        y: 160,
+        duration: 1,
+        ease: 'expo',
+        delay: .4
+      })
+      gsap.from('.landing-title--2', {
+        y: 160,
+        duration: 1,
+        ease: 'expo',
+        delay: .5
+      })
+      gsap.from(logo, {
+        delay: 1.6,
+        scale: 0
+      })
     })
 
     //Text reveal
@@ -238,12 +263,11 @@
     })
 
     //menu //jQuery deleten
-    $('.menu-link').each(function (index) {
-      var characters = $(this).text().split("")
-      $this = $(this)
-      $this.empty()
-      $.each(characters, function (i, el) {
-        $this.append('<span class="letter">' + el + '</span>')
+    document.querySelectorAll('.menu-link').forEach(function (el) {
+      var characters = el.innerHTML.split('')
+      el.innerHTML = ''
+      characters.forEach((i, el) => {
+        i.append('<span class="letter">' + el + '</span>')
       })
     })
 

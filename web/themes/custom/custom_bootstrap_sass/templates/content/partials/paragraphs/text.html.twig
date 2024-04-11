@@ -1,0 +1,18 @@
+<section class="section--text section--par">
+  <div class="container-fluid">
+    {% if paragraph.entity.field_title.value %}
+      <div class="row">
+        <div class="title">
+          <h4>
+            {{ paragraph.entity.field_title.value | raw }}
+          </h4>
+        </div>
+      </div>
+    {% endif %}
+    <div class="row">
+      <div class="par-text">
+        {{ paragraph.entity.field_text.value | raw }}
+      </div>
+    </div>
+  </div>
+</section>

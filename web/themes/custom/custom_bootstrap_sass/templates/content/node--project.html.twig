@@ -9,12 +9,14 @@
     </div>
     <div class="row">
       <div class="col">
-        <h1 class="project-title">{{ node.title.value }}</h1>
+        <div class="title-mask project-title-mask">
+          <h1 class="project-title">{{ node.title.value }}</h1>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12 position-relative">
-        <img src="{{ node.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="" class="landing-img paralax">
+        <img src="{{ node.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="" class="landing-img parallax">
       </div>
     </div>
   </div>
