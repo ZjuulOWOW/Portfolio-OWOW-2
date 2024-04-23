@@ -118,7 +118,6 @@ body.scrolldown header{
     display: none;
   }
   &:hover{
-    color: $primary!important;
     &:before{
       display: block;
     }
@@ -147,7 +146,7 @@ body.scrolldown header{
   background: $primary;
   top: -100vh;
   padding-bottom: 40px;
-  z-index: 3;
+  z-index: 4;
   transition: top 1s cubic-bezier(0.16, 1, 0.3, 1);
   &.is-active{
     top: 0;
@@ -163,9 +162,13 @@ body.scrolldown header{
 
 .menu-links{
   @include make-col-ready();
-  @include make-col(9);
+  @include make-col(10);
+  @include make-col-offset(1);
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
 }
 
 .menu-footer{
@@ -178,27 +181,17 @@ body.scrolldown header{
 }
 
 .menu-links .nav-item{
-  border-bottom: 1px solid $secondary;
-  &:first-of-type{
-    border-radius: $border-radius $border-radius 0 0;
-  }
-  &:last-of-type{
-    border: none;
-    border-radius: 0 0 $border-radius $border-radius;
-  }
-  &:hover{
-    background: $secondary;
-    color: $primary;
-  }
-}
-
-.menu-link{
-  font-size: $h1-font-size;
+  font-size: $h2-font-size;
   font-family: $headings-font-family;
   color: $secondary;
-  padding: 16px 0;
   transition: .2s;
-  cursor: none;
+  line-height: .8;
+  border-top: 1px solid $secondary;
+  display: flex;
+  justify-content: center;
+  &:first-of-type{
+    border-top: none;
+  }
 }
 
 .menu-link>span{
@@ -342,6 +335,7 @@ h1{
 
 .landing-title{
   text-align: center;
+  z-index: 2;
 }
 
 h1, h2, .menu-link{
@@ -373,6 +367,11 @@ h4{
     margin-left: 16px;
     height: 1px;
   }
+}
+
+.title--split{
+  @include make-col-ready();
+  @include make-col(6);
 }
 
 a{
@@ -421,7 +420,7 @@ section:first-of-type{
 
 .par-text{
   @include make-col-ready();
-  @include make-col(5);
+  @include make-col(8);
   @include make-col-offset(1);
 }
 
@@ -500,9 +499,9 @@ section:first-of-type{
 
 .logo--3d{
   position: absolute;
-  z-index: -1;
-  mix-blend-mode: lighten;
   height: 500px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hoop{
@@ -510,11 +509,30 @@ section:first-of-type{
   border: 5px solid $primary;
 }
 
-.hoop--landing{
+.hoop-mask{
+  height: 30vh;
+  width: 70vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transform: translatey(15vh);
+  z-index: 3;
+  overflow: hidden;
+}
+
+.hoop--landing,
+.hoop--menu{
   height: 60vh;
   width: 40vw;
   position: absolute;
-  transform: skewX(300deg)
+  transform: skewX(300deg);
+  z-index: -1;
+}
+
+.hoop--menu{
+  border-color: $secondary;
+  left: 25%;
 }
 
 .hoop--service{
@@ -548,36 +566,23 @@ iframe{
   margin-top: 80px;
 }
 
-.projects{
-  .views-row{
-    margin-bottom: 16px;
-    @include make-col-ready();
-    @include make-col(10);
-    @include make-col-offset(1);
-  }
-}
-
 .overview-projects{
   @include make-col-ready();
   @include make-col(12);
 }
 
-.project{
-  display: flex;
-  align-items: center;
-  padding: 16px 0;
-  transition: .2s;
+.project-goal{
+  @include make-col-ready();
+  @include make-col(8);
+  @include make-col-offset(1)
 }
 
-.home-project{
-  color: $primary;
-  height: 200px;
-  backdrop-filter: brightness($brightness);
-  border-radius: $border-radius;
-}
-
-.home-projects .views-row:hover .views-row{
-  background: red;
+.home-projects .views-row{
+  @include make-col-ready;
+  @include make-col(4);
+  hr{
+    margin: 40px 0 8px 0;
+  }
 }
 
 .overview-project{
@@ -608,25 +613,8 @@ iframe{
   margin-bottom: 80px;
 }
 
-.home-project-title{
-  @include make-col-ready();
-  @include make-col(7);
-  @include make-col-offset(1)
-}
-
-.home-projects-img{
-  @include make-col-ready();
-  @include make-col(4);
-  @include make-col-offset(6);
-  position: absolute;
-  height: 100%;
-  pointer-events: none;
-  & *{
-    height: 100%;
-  }
-  & .views-row{
-    padding-bottom: 16px;
-  }
+.home-project-img{
+  height: 640px;
 }
 
 .home-projects-img .views-row{
@@ -658,7 +646,8 @@ iframe{
   font-style: italic;
 }
 
-.cmd-methods{
+.cmd-methods,
+.project-outro{
   @include make-col-ready();
   @include make-col(10);
   @include make-col-offset(1);
@@ -667,12 +656,15 @@ iframe{
   padding: 0;
 }
 
-.cmd-method{
+.cmd-method,
+.project-conclusion,
+.project-future{
   @include make-col-ready();
   @include make-col(6);
 }
 
-.cmd-method-content{
+.cmd-method-content,
+.textfield{
   padding: 32px;
   margin-bottom: 32px;
   backdrop-filter: brightness($brightness);
@@ -697,6 +689,10 @@ iframe{
   @include make-col-ready();
   @include make-col(10);
   @include make-col-offset(1)
+}
+
+.project-outro{
+
 }
 
 .section--about{
@@ -810,3 +806,4 @@ iframe{
   height: 48px;
   width: 48px;
 }
+

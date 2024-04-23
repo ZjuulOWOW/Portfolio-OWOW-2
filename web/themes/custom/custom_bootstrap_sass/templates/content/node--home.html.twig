@@ -1,9 +1,9 @@
 <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.87/build/spline-viewer.js"></script>
 <section class="section--landing">
-{#  <video class="logo--3d" id="js-logo" height="700" autoplay muted loop>#}
-{#    <source src="./themes/custom/custom_bootstrap_sass/images/retro-glass-material-copy (2).webm" type="video/mp4" >#}
-{#  </video>#}
   <spline-viewer onLoad class="logo--3d" id="js-logo" loading="eager" url="https://prod.spline.design/U2kajozBtuhH3ozm/scene.splinecode"></spline-viewer>
+  <div class="hoop-mask">
+    <div class="hoop hoop--landing"></div>
+  </div>
   <div class="hoop hoop--landing"></div>
   <div class="container container--landing">
     <div class="row">
@@ -34,9 +34,6 @@
       <div class="projects home-projects">
         {{ views.custom_bootstrap_sass_views_block__projects_block_1 }}
         {{ views.custom_bootstrap_sass_views_block__projects_block_2 }}
-      </div>
-      <div class="home-projects-img">
-        {{ views.custom_bootstrap_sass_views_block__projects_img_block_1 }}
       </div>
     </div>
   </div>

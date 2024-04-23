@@ -147,18 +147,6 @@
     var tl = gsap.timeline()
     var logo = document.getElementById('js-logo')
 
-    tl.to(logo, {
-      scrollTrigger: {
-        trigger: '.logo--3d',
-        start: 'top',
-        scrub: 1,
-        end: "+=500",
-      },
-      y: vh + 300,
-      x: 200,
-      ease: "none"
-    })
-
     //Landing intro
     window.addEventListener('load', () => {
       gsap.from('.project-title, .landing-title--1', {
@@ -236,60 +224,13 @@
       rotate: 90
     })
 
-    //view home image carousel
-    const projects = document.querySelector('.home-projects')
-    const projectRows = document.querySelectorAll('.home-projects .views-row')
-    const projectImgs = document.querySelectorAll('.home-projects-img .views-row')
+    //menu
 
-    projectRows.forEach((el, index) => {
-      el.addEventListener('mouseenter', () => {
-        projectImgs.forEach((img) => {
-          img.classList.remove('active')
-        })
-        gsap.to(logo, {
-          scale: 0
-        })
-        projectImgs[index].classList.add('active')
-      })
-    })
-    projects.addEventListener('mouseleave', () => {
-      projectImgs.forEach((img) => {
-        img.classList.remove('active')
-      })
-      gsap.to(logo, {
-        scale: 1,
-        delay: .4
-      })
-    })
-
-    //menu //jQuery deleten
-    document.querySelectorAll('.menu-link').forEach(function (el) {
-      var characters = el.innerHTML.split('')
-      el.innerHTML = ''
-      characters.forEach((i, el) => {
-        i.append('<span class="letter">' + el + '</span>')
-      })
-    })
-
-    var tween = gsap.fromTo(
-      ".menu-link>span",
-      {
-        opacity: 0,
-        y: -100
-      },
-      {
-        opacity: 1,
-        duration: .5,
-        stagger: .02,
-        y: 0,
-        easing: 'ease-in',
-      })
-    tween.reverse()
-
-    $('.nav-menu-btn').click(function(){
-      $('.menu').toggleClass("is-active")
-      $("html, body").animate({ scrollTop: 0, height: "100vh" }, "slow")
-      tween.play()
+    const menu = document.querySelector('.nav-menu-btn')
+    menu.addEventListener('click', function(){
+      document.querySelector('.menu').classList.toggle("is-active");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.style.height = "100vh";
     })
 
   </script>

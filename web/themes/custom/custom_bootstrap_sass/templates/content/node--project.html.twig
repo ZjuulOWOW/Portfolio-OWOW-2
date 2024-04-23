@@ -42,6 +42,24 @@
     <div class="row">
       <div class="title">
         <h4>
+          Doel
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="project-goal">
+        <div class="textfield">
+          <p>{{ node.field_doel.value | raw }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--par">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="title">
+        <h4>
           CMD methods
         </h4>
       </div>
@@ -68,3 +86,33 @@
   </div>
 </section>
 {% include directory ~ '/templates/content/partials/paragraphs.html.twig' %}
+<section class="section--par">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="title title--split">
+        <h4>
+          Conclusie
+        </h4>
+      </div>
+      <div class="title title--split">
+        <h4>
+          Vervolgstap
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="project-outro">
+        <div class="project-conclusion">
+          <div class="textfield">
+            <p>{{ node.field_conclusie.value | raw }}</p>
+          </div>
+        </div>  
+      <div class="project-future">
+        <div class="textfield">
+          <p>{{ node.field_vervolgstap.value | raw }}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
