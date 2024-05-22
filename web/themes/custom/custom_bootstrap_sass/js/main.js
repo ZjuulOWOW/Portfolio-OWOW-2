@@ -1,0 +1,137 @@
+import { createPageTransition } from "./OWOW-motion/createPageTransition.js"
+import { createZoomMotion } from "./OWOW-motion/createZoomMotion.js"
+import { initHome } from "./home.js"
+
+const init = () => {
+    createZoomMotion("main", {
+        direction: "in",
+        ease: "ease",
+        scale: 1.1,
+        start: "bottom bottom",
+        end: "bottom+=1000",
+        pin: true,
+    })
+    createPageTransition({
+        leave: [
+            {
+                target: ".transition",
+                keyframes: {
+                    transform: [
+                        "translate3D(0, 100vh, 0)",
+                        "translate3D(0, 0, 0)",
+                    ],
+                },
+                duration: 1000,
+                ease: "cubic-bezier(0,1,1,1)",
+            },
+            {
+                target: "main",
+                keyframes: {
+                    transform: ["scale(1)", "scale(.95)"],
+                },
+                duration: 1000,
+                ease: "ease",
+            },
+            {
+                target: ".transition-logo",
+                keyframes: {
+                    transform: "rotate3d(0, 1, 0, 180deg)",
+                },
+                duration: 1000,
+                ease: "ease",
+            },
+        ],
+        enter: [
+            {
+                target: ".transition",
+                keyframes: {
+                    transform: [
+                        "translate3D(0, 0, 0)",
+                        "translate3D(0, -100vh ,0)",
+                    ],
+                },
+                duration: 1000,
+                ease: "cubic-bezier(0,1,1,1)",
+            },
+            {
+                target: "main",
+                keyframes: {
+                    transform: ["translate3d(0,80px,0)", "translate3d(0,0,0)"],
+                    opacity: [0, 1],
+                },
+                duration: 1000,
+                ease: "ease",
+            },
+            {
+                target: ".transition-logo",
+                keyframes: {
+                    transform: ["rotate3d(0, 1, 0, 180deg)", "rotate3d(0, 1, 0, 0)"],
+                },
+                duration: 1000,
+                ease: "ease-out",
+            },
+        ],
+    })
+
+    //Parallax
+    const parallax = document.querySelectorAll(".parallax")
+    new simpleParallax(parallax, {})
+    //Logo
+    var vh = window.innerHeight
+    var tl = gsap.timeline()
+    var logo = document.getElementById("js-logo")
+
+    //Landing intro
+    gsap.from(".project-title, .landing-title--1", {
+        y: 160,
+        duration: 1,
+        ease: "expo",
+        delay: 0.4,
+    })
+    gsap.from(".landing-title--2", {
+        y: 160,
+        duration: 1,
+        ease: "expo",
+        delay: 0.5,
+    })
+    gsap.from(logo, {
+        delay: 1.6,
+        scale: 0,
+    })
+
+    //Text reveal
+    var textReveal = document.querySelectorAll(".reveal")
+    textReveal.forEach((text) => {
+        var characters = text.innerHTML.split("")
+        text.innerHTML = ""
+        characters.forEach(function (el) {
+            var span = document.createElement("span")
+            span.classList.add("reveal-span")
+            var content = document.createTextNode(el)
+            span.appendChild(content)
+            text.appendChild(span)
+        })
+    })
+
+    gsap.to(".reveal-span", {
+        scrollTrigger: {
+            trigger: ".reveal",
+            start: "-100px center",
+            end: "bottom-=240px center",
+            scrub: 1,
+        },
+        opacity: 1,
+        stagger: 1,
+    })
+    //menu
+
+    const menu = document.querySelector(".nav-menu-btn")
+    menu.addEventListener("click", function () {
+        document.querySelector(".menu").classList.toggle("is-active")
+        window.scrollTo({ top: 0, behavior: "smooth" })
+        document.body.style.height = "100vh"
+    })
+    initHome()
+}
+init()
+export { init }

@@ -1,118 +1,130 @@
-<section>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <a href="./projects">
-          < Back to projects
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="title-mask project-title-mask">
-          <h1 class="project-title">{{ node.title.value }}</h1>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 position-relative">
-        <img src="{{ node.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="" class="landing-img parallax">
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section--par">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="title">
-        <h4>
-          Intro
-        </h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="project-intro">
-        <h3 class="reveal">{{ node.field_intro.value | raw }}</h3>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section--par">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="title">
-        <h4>
-          Doel
-        </h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="project-goal">
-        <div class="textfield">
-          <p>{{ node.field_doel.value | raw }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section--par">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="title">
-        <h4>
-          CMD methods
-        </h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cmd-methods">
-        {% for paragraph in node.field_cmd_methods %}
-        {% set cat = paragraph.entity.field_category.value %}
-        {% set method = paragraph.entity.field_method.value %}
-          <div class="cmd-method">
-            <div class="cmd-method-content">
-              <div class="cmd-method-header">
-                <img class="cmd-method-logo" src="./themes/custom/custom_bootstrap_sass/images/logo-{{ cat | lower }}.png" alt="">
-                <h5 class="m-0" style="color: var(--{{ cat | lower}})">{{ method }}</h5>
-              </div>
-              <div class="cmd-method-body">
-                {{ paragraph.entity.field_toelichting.value | raw }}
-              </div>
+<main class="barba-main" data-barba="container">
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <a href="./projects"> < Back to projects </a>
+                </div>
             </div>
-          </div>
-      {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
-{% include directory ~ '/templates/content/partials/paragraphs.html.twig' %}
-<section class="section--par">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="title title--split">
-        <h4>
-          Conclusie
-        </h4>
-      </div>
-      <div class="title title--split">
-        <h4>
-          Vervolgstap
-        </h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="project-outro">
-        <div class="project-conclusion">
-          <div class="textfield">
-            <p>{{ node.field_conclusie.value | raw }}</p>
-          </div>
-        </div>  
-      <div class="project-future">
-        <div class="textfield">
-          <p>{{ node.field_vervolgstap.value | raw }}</p>
+            <div class="row">
+                <div class="col">
+                    <div class="title-mask project-title-mask">
+                        <h1 class="project-title">
+                            {{ node.title.value }}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 position-relative">
+                    <img
+                        src="{{ node.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic') }}"
+                        alt=""
+                        class="landing-img parallax"
+                    />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
+    </section>
+    <section class="section--par">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="title">
+                    <h4>Intro</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="project-intro">
+                    <h3 class="reveal">
+                        {{ node.field_intro.value | raw }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section--par">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="title">
+                    <h4>Doel</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="project-goal">
+                    <div class="textfield">
+                        <p>{{ node.field_doel.value | raw }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section--par">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="title">
+                    <h4>CMD methods</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cmd-methods">
+                    {% for paragraph in node.field_cmd_methods %} {% set cat =
+                    paragraph.entity.field_category.value %} {% set method =
+                    paragraph.entity.field_method.value %}
+                    <div class="cmd-method">
+                        <div class="cmd-method-content">
+                            <div class="cmd-method-header">
+                                <img
+                                    class="cmd-method-logo"
+                                    src="./themes/custom/custom_bootstrap_sass/images/logo-{{
+                                        cat | lower
+                                    }}.png"
+                                    alt=""
+                                />
+                                <h5
+                                    class="m-0"
+                                    style="color: var(--{{ cat | lower }})"
+                                >
+                                    {{ method }}
+                                </h5>
+                            </div>
+                            <div class="cmd-method-body">
+                                {{
+                                    paragraph.entity.field_toelichting.value
+                                        | raw
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include directory ~ '/templates/content/partials/paragraphs.html.twig' %}
+    <section class="section--par">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="title title--split">
+                    <h4>Conclusie</h4>
+                </div>
+                <div class="title title--split">
+                    <h4>Vervolgstap</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="project-outro">
+                    <div class="project-conclusion">
+                        <div class="textfield">
+                            <p>{{ node.field_conclusie.value | raw }}</p>
+                        </div>
+                    </div>
+                    <div class="project-future">
+                        <div class="textfield">
+                            <p>{{ node.field_vervolgstap.value | raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

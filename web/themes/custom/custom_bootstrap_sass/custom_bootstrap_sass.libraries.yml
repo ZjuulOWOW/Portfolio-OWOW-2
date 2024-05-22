@@ -3,7 +3,6 @@ global-styling:
   js: 
     js/bootstrap.min.js: { weight: -48 }
     js/barrio.js: {}
-    js/custom.js: {}
   css:
     component:
       css/style.css: {}

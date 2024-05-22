@@ -14,11 +14,11 @@
  *   - slogan: The slogan of the site.
  * - page_top: Initial rendered markup. This should be printed before 'page'.
  * - page: The rendered page markup.
- * - path_info.args: Array of URL arguments un aliassed.
+ * - path_info.args: Array of URL arguments unaliased.
  * - page_bottom: Closing rendered markup. This variable should be printed after
  *   'page'.
  * - db_offline: A flag indicating if the database is offline.
- * - placeholder_token: The token for generating head, css, js and js-bottom
+ * - placeholder_token: The token for generating head, css, js, and js-bottom
  *   placeholders.
  *
  * @see template_preprocess_html()
@@ -26,11 +26,11 @@
 #}
 {%
   set body_classes = [
-	  'page-wapper',
-    logged_in ? 'user-logged-in',
+    'page-wrapper',
+    logged_in ? 'user-logged-in' : '',
     not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
-    node_type ? 'node--type-' ~ node_type|clean_class,
-    db_offline ? 'db-offline',
+    node_type ? 'node--type-' ~ node_type|clean_class : '',
+    db_offline ? 'db-offline' : '',
   ]
 %}
 <!DOCTYPE html>
@@ -39,199 +39,36 @@
     <head-placeholder token="{{ placeholder_token|raw }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-      <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
-      <script defer>
-        //Lenis
-        const lenis = new Lenis(
-        )
-        function raf(time) {
-          lenis.raf(time)
-          requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf)
-      </script>
-      </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="module" src="themes/custom/custom_bootstrap_sass/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+    <script defer>
+      // Initialize Lenis for smooth scrolling
+      const lenis = new Lenis({});
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    </script>
+  </head>
   <body{{ attributes.addClass(body_classes) }}>
-  <div class="transition">
-    <img src="./themes/custom/custom_bootstrap_sass/images/logo.svg" alt="" class="transition-logo">
-  </div>
-  <div class="page-wrapper" id="smooth-wrapper">
+    <div class="transition">
+      <img src="./themes/custom/custom_bootstrap_sass/images/logo.svg" alt="Logo" class="transition-logo">
+    </div>
+    <div class="page-wrapper" id="smooth-wrapper">
       <div id="smooth-content">
-        <a href="#main-content" class="visually-hidden focusable skip-link">
-          {{ 'Skip to main content'|t }}
-        </a>
-
-        {{ page_top }}
-        {{ page }}
-        {{ page_bottom }}
+          {{ page_top }}
+          {{ page }}
+          {{ page_bottom }}
       </div>
     </div>
-	<js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
-  <script>
-    const parallax = document.querySelectorAll('.parallax')
-    new simpleParallax(parallax, {
-    })
-
-    //page transition
-    var href
-    const transition =  document.querySelector('.transition')
-    const transitionLogo = document.querySelector('.transition-logo')
-
-    document.querySelectorAll('a').forEach((a) =>{
-      a.addEventListener('click', (e)=>{
-        href = a.getAttribute('href')
-        if(href!=null) {
-          e.preventDefault()
-          transition.animate(
-            [
-              {transform: 'translate3D(0,100%,0 )', borderRadius: '50%'},
-              {transform: 'translate3D(0,0,0 )', borderRadius: 0},
-            ],
-            {
-              duration: 500,
-              easing: 'ease-in-out',
-              fill: "forwards"
-            }
-          )
-          transitionLogo.animate(
-            [
-              {transform: 'rotate3d(0, 1, 0, 0)'},
-              {transform: 'rotate3d(0, 1, 0, 360deg)'}
-            ],
-            {
-              duration: 500,
-              fill: "forwards"
-            }
-          )
-          setTimeout(function () {
-            window.location.href = href
-          }, 500)
-        }
-      })
-    })
-
-    window.addEventListener('pageshow', (e)=>{
-      transition.animate(
-        [
-          { transform: 'translate3D(0,0,0 )', borderRadius: '0' },
-          { transform: 'translate3D(0,-100%,0 )', borderRadius: '50%' }
-        ],
-        {
-          duration: 500,
-          easing: 'ease-in-out',
-          fill: 'forwards'
-        }
-      )
-      transitionLogo.animate(
-        [
-          { transform: 'rotate3d(0, 1, 0, 360deg)'},
-          { transform: 'rotate3d(0, 1, 0, 0)'}
-        ],
-        {
-          duration: 500,
-          fill: "forwards"
-        }
-      )
-    })
-
-    //Logo
-    var vh = window.innerHeight
-    var tl = gsap.timeline()
-    var logo = document.getElementById('js-logo')
-
-    //Landing intro
-    window.addEventListener('load', () => {
-      gsap.from('.project-title, .landing-title--1', {
-        y: 160,
-        duration: 1,
-        ease: 'expo',
-        delay: .4
-      })
-      gsap.from('.landing-title--2', {
-        y: 160,
-        duration: 1,
-        ease: 'expo',
-        delay: .5
-      })
-      gsap.from(logo, {
-        delay: 1.6,
-        scale: 0
-      })
-    })
-
-    //Text reveal
-    var textReveal = document.querySelectorAll('.reveal')
-      textReveal.forEach((text) => {
-        var characters = text.innerHTML.split('')
-        text.innerHTML = ''
-        characters.forEach(function (el) {
-          var span = document.createElement('span')
-          span.classList.add('reveal-span')
-          var content = document.createTextNode(el)
-          span.appendChild(content)
-          text.appendChild(span)
-        })
-      })
-
-    gsap.to('.reveal-span', {
-      scrollTrigger: {
-        trigger: '.reveal',
-        start: '-100px center',
-        end: 'bottom-=240px center',
-        scrub: 1,
-      },
-      opacity: 1,
-      stagger: 1,
-    })
-
-    gsap.to('.about-el', {
-      scrollTrigger: {
-        trigger: '.about',
-        start: '-500px 200px',
-        end: 'bottom 200px',
-        scrub: 1
-      },
-      y: gsap.utils.wrap(['+=160', '+=320', '+=80']),
-      rotate: gsap.utils.wrap(['180deg', '90deg', '0'])
-    })
-
-    //Service
-    gsap.from('.hoop--service', {
-      scrollTrigger: {
-        trigger: '.section--service',
-        start: '-500px center',
-        end: '1000px center',
-        scrub: true,
-      },
-      y: 600
-    })
-
-    gsap.to('.service-img--star', {
-      scrollTrigger: {
-        trigger: '.section--service',
-        start: '-100px center',
-        end: 'bottom center',
-        scrub: 1
-      },
-      rotate: 90
-    })
-
-    //menu
-
-    const menu = document.querySelector('.nav-menu-btn')
-    menu.addEventListener('click', function(){
-      document.querySelector('.menu').classList.toggle("is-active");
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.body.style.height = "100vh";
-    })
-
-  </script>
 </html>
