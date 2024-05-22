@@ -21,25 +21,26 @@ html.lenis {
   pointer-events: none;
 }
 
-.paralax{
+.paralax {
   pointer-events: none;
 }
 
 // Body, HTML
 
-html,body{
+html,
+body {
   overflow-x: hidden;
- &:has(.menu.is-active){
-   overflow: hidden;
- }
-  &:not(:has(.menu.is-active)){
-    height: unset!important;
+  &:has(.menu.is-active) {
+    overflow: hidden;
+  }
+  &:not(:has(.menu.is-active)) {
+    height: unset !important;
   }
 }
 
 // Header
 
-header{
+header {
   position: fixed;
   z-index: 8;
   width: 100%;
@@ -47,11 +48,11 @@ header{
   top: 0;
 }
 
-body.scrolldown header{
+body.scrolldown header {
   transform: translate3d(0, calc(-100% - 32px), 0);
 }
 
-.header-content{
+.header-content {
   border-radius: 16px;
   backdrop-filter: brightness($brightness) blur(20px);
   display: flex;
@@ -59,32 +60,32 @@ body.scrolldown header{
   margin-top: 32px;
 }
 
-.nav-brand{
+.nav-brand {
   @include make-col-ready();
   @include make-col(4);
   display: flex;
   align-items: center;
 }
 
-.nav-logo{
+.nav-logo {
   justify-content: center;
 }
 
-.nav-logo-link{
+.nav-logo-link {
   height: 48px;
   width: 48px;
-  &:hover > .logo{
+  &:hover > .logo {
     transform: rotate3d(0, 1, 0, 180deg);
   }
 }
 
-.logo{
+.logo {
   height: 100%;
   border-radius: 0;
-  transition: .4s transform;
+  transition: 0.4s transform;
 }
 
-.nav-links{
+.nav-links {
   @include make-col-ready();
   @include make-col(4);
   display: flex;
@@ -92,45 +93,45 @@ body.scrolldown header{
   align-items: center;
 }
 
-.nav-menu-btn{
+.nav-menu-btn {
   padding: 0 8px;
   width: fit-content;
   margin-left: 16px;
 }
 
-.noline{
-  &::before{
-    content: none!important;
+.noline {
+  &::before {
+    content: none !important;
   }
 }
 
-.nav-menu-icon{
+.nav-menu-icon {
   font-size: 28px;
   line-height: 0;
 }
 
-.menu .nav-link{
+.menu .nav-link {
   display: flex;
-  &:before{
-    content: '\F135';
+  &:before {
+    content: "\F135";
     font-family: bootstrap-icons;
     font-size: $h2-font-size;
     display: none;
   }
-  &:hover{
-    &:before{
+  &:hover {
+    &:before {
       display: block;
     }
   }
 }
 
-.menu .nav-link.active{
-  color: $secondary!important;
-  &:hover{
-    color: $primary!important;
+.menu .nav-link.active {
+  color: $secondary !important;
+  &:hover {
+    color: $primary !important;
   }
-  &:before{
-    content: '\F135';
+  &:before {
+    content: "\F135";
     font-family: bootstrap-icons;
     font-size: $h2-font-size;
     display: block;
@@ -139,7 +140,7 @@ body.scrolldown header{
 
 // Menu
 
-.menu{
+.menu {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -148,19 +149,19 @@ body.scrolldown header{
   padding-bottom: 40px;
   z-index: 4;
   transition: top 1s cubic-bezier(0.16, 1, 0.3, 1);
-  &.is-active{
+  &.is-active {
     top: 0;
   }
 }
 
-.menu-container{
+.menu-container {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.menu-links{
+.menu-links {
   @include make-col-ready();
   @include make-col(10);
   @include make-col-offset(1);
@@ -171,7 +172,7 @@ body.scrolldown header{
   position: relative;
 }
 
-.menu-footer{
+.menu-footer {
   @include make-col-ready();
   @include make-col-offset(1);
   @include make-col(2);
@@ -180,38 +181,38 @@ body.scrolldown header{
   color: $secondary;
 }
 
-.menu-links .nav-item{
+.menu-links .nav-item {
   font-size: $h2-font-size;
   font-family: $headings-font-family;
   color: $secondary;
-  transition: .2s;
-  line-height: .8;
+  transition: 0.2s;
+  line-height: 0.8;
   border-top: 1px solid $secondary;
   display: flex;
   justify-content: center;
-  &:first-of-type{
+  &:first-of-type {
     border-top: none;
   }
 }
 
-.menu-link>span{
+.menu-link > span {
   display: inline-block;
 }
 
 // Footer
 
-footer{
+footer {
   height: 100vh;
   position: relative;
   overflow-y: hidden;
   margin-top: 240px;
 }
 
-.footer-logo{
-  bottom: -60%
+.footer-logo {
+  bottom: -60%;
 }
 
-.footer-container{
+.footer-container {
   @include make-container();
   display: flex;
   flex-direction: column;
@@ -221,7 +222,7 @@ footer{
   overflow-y: hidden;
 }
 
-.footer-title{
+.footer-title {
   @include make-col-ready();
   @include make-col();
   display: flex;
@@ -230,93 +231,93 @@ footer{
 }
 
 .footer-brand,
-.footer-cr{
+.footer-cr {
   @include make-col-ready();
   @include make-col(6);
   border-top: 1px solid $secondary;
   padding-top: 40px;
-  > *{
+  > * {
     margin-bottom: 0;
   }
 }
 
-.footer-cr{
+.footer-cr {
   display: flex;
   justify-content: flex-end;
 }
 
-.footer-cta{
+.footer-cta {
   @include make-col-ready();
   @include make-col();
   @include make-col-offset(1);
   position: relative;
   display: flex;
   align-items: center;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.footer-link{
+.footer-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  &:hover{
-    &>.footer-link-arrow{
+  &:hover {
+    & > .footer-link-arrow {
       transform: rotate(20deg);
     }
   }
 }
 
-.footer-link-arrow{
+.footer-link-arrow {
   color: $secondary;
   position: absolute;
   font-size: 320px;
   transform: rotate(45deg);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 // Buttons
 
-.btn{
+.btn {
   display: flex;
   align-items: center;
   position: relative;
   padding: 0;
-  &::before{
+  &::before {
     content: "";
     height: 1px;
     width: 0;
-    background: #F7F4EF;
+    background: #f7f4ef;
     position: absolute;
     top: 100%;
-    transition: width .2s ease-out;
+    transition: width 0.2s ease-out;
   }
-  &:hover{
-    &::before{
+  &:hover {
+    &::before {
       width: 100%;
     }
   }
 }
 
-.btn-primary{
+.btn-primary {
   color: $primary;
   background: none;
   border: none;
-  &:hover{
+  &:hover {
     background: none;
     color: $primary;
   }
 }
 
-.btn:active{
-  background-color: transparent!important;
-  color: $primary!important;
+.btn:active {
+  background-color: transparent !important;
+  color: $primary !important;
 }
 
-.btn-arrow{
+.btn-arrow {
   display: flex;
   justify-content: space-between;
   width: fit-content;
-  &:after{
+  &:after {
     font-family: "bootstrap-icons";
     content: "\F135";
     color: $primary;
@@ -328,39 +329,41 @@ footer{
 
 // Typography
 
-h1{
+h1 {
   line-height: 144px;
   margin-bottom: 0;
 }
 
-.landing-title{
+.landing-title {
   text-align: center;
   z-index: 2;
 }
 
-h1, h2, .menu-link{
+h1,
+h2,
+.menu-link {
   text-transform: uppercase;
 }
 
-h5{
-  font-family: 'poppins', sans-serif;
+h5 {
+  font-family: "poppins", sans-serif;
   font-weight: normal;
 }
 
-h4{
+h4 {
   font-family: $font-family-sans-serif;
   white-space: nowrap;
   margin-bottom: 0;
 }
 
-.title{
+.title {
   @include make-col-ready;
   @include make-col(12);
   display: flex;
   align-items: center;
   padding-bottom: 120px;
-  &:after{
-    content: '';
+  &:after {
+    content: "";
     width: available;
     width: -moz-available;
     background: $primary;
@@ -369,95 +372,95 @@ h4{
   }
 }
 
-.title--split{
+.title--split {
   @include make-col-ready();
   @include make-col(6);
 }
 
-a{
+a {
   color: $primary;
-  &:hover{
+  &:hover {
     text-decoration: none;
   }
 }
 
-hr{
+hr {
   margin: 40px 0;
 }
 
 // Sections
 
-section{
+section {
   margin-top: 240px;
 }
 
-section:first-of-type{
+section:first-of-type {
   margin-top: 0;
   padding-top: 240px;
 }
 
-.section--landing{
+.section--landing {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 0!important;
+  padding-top: 0 !important;
 }
 
-.section--media + .section--text{
+.section--media + .section--text {
   margin-top: 40px;
 }
 
-.section--par + .section--par{
+.section--par + .section--par {
   margin-top: 80px;
 }
 
-.section--service{
+.section--service {
   margin-top: 400px;
 }
 
 // Paragraphs
 
-.par-text{
+.par-text {
   @include make-col-ready();
   @include make-col(8);
   @include make-col-offset(1);
 }
 
-.par-media{
+.par-media {
   @include make-col-ready();
-  &:first-of-type{
+  &:first-of-type {
     @include make-col-offset(1);
   }
-  &>iframe{
+  & > iframe {
     aspect-ratio: 16 / 9;
   }
-  &>.simpleParallax{
+  & > .simpleParallax {
     height: 100%;
-    &>img{
+    & > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
-  &--1{
+  &--1 {
     @include make-col(5);
   }
-  &--2{
+  &--2 {
     @include make-col(4);
   }
-  &--3{
+  &--3 {
     @include make-col(3);
   }
 }
 
-.par-button{
+.par-button {
   @include make-col-ready();
   @include make-col();
   @include make-col-offset(1);
 }
 
-.par-caption{
+.par-caption {
   @include make-col-ready();
   @include make-col(11);
   @include make-col-offset(1);
@@ -465,20 +468,20 @@ section:first-of-type{
 
 // CSS
 
-.simpleParallax{
+.simpleParallax {
   border-radius: $border-radius;
 }
 
-.landing-title{
-  &--1{
+.landing-title {
+  &--1 {
     align-self: flex-start;
   }
-  &--2{
+  &--2 {
     align-self: flex-end;
   }
 }
 
-.title-mask{
+.title-mask {
   @include make-col-ready();
   @include make-col(12);
   display: flex;
@@ -486,30 +489,40 @@ section:first-of-type{
   overflow-y: hidden;
 }
 
-.landing-cta{
+.landing-cta {
   @include make-col-ready();
   @include make-col();
   @include make-col-offset(10);
   padding-top: 120px;
 }
 
-.container--landing{
+.container--landing {
   margin-top: 160px;
 }
 
-.logo--3d{
+.logo--3d {
   position: absolute;
   height: 500px;
   z-index: 1;
   pointer-events: none;
+  &:after {
+    content: "";
+    position: absolute;
+    height: 60px;
+    width: 160px;
+    background: $secondary;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
 }
 
-.hoop{
+.hoop {
   border-radius: 50%;
   border: 5px solid $primary;
 }
 
-.hoop-mask{
+.hoop-mask {
   height: 30vh;
   width: 70vw;
   position: absolute;
@@ -522,7 +535,7 @@ section:first-of-type{
 }
 
 .hoop--landing,
-.hoop--menu{
+.hoop--menu {
   height: 60vh;
   width: 40vw;
   position: absolute;
@@ -530,12 +543,12 @@ section:first-of-type{
   z-index: -1;
 }
 
-.hoop--menu{
+.hoop--menu {
   border-color: $secondary;
   left: 25%;
 }
 
-.hoop--service{
+.hoop--service {
   height: 100px;
   transform: rotate(-8deg) translateY(40px);
   white-space: nowrap;
@@ -547,57 +560,57 @@ section:first-of-type{
 }
 
 img,
-iframe{
+iframe {
   border-radius: $border-radius;
   object-fit: cover;
   width: 100%;
 }
 
-.landing-img{
+.landing-img {
   height: 560px;
 }
 
-.text--circ{
+.text--circ {
   height: 400px;
   width: 400px;
 }
 
-.row--landing{
+.row--landing {
   margin-top: 80px;
 }
 
-.overview-projects{
+.overview-projects {
   @include make-col-ready();
   @include make-col(12);
 }
 
-.project-goal{
+.project-goal {
   @include make-col-ready();
   @include make-col(8);
-  @include make-col-offset(1)
+  @include make-col-offset(1);
 }
 
-.home-projects .views-row{
+.home-projects .views-row {
   @include make-col-ready;
   @include make-col(4);
-  hr{
+  hr {
     margin: 40px 0 8px 0;
   }
 }
 
-.overview-project{
+.overview-project {
   height: 160px;
   position: relative;
   &:hover {
     background: $primary;
     color: $secondary;
-    &>.overview-project-img{
+    & > .overview-project-img {
       display: block;
     }
   }
 }
 
-.overview-project-img{
+.overview-project-img {
   position: absolute;
   right: 0;
   margin-right: 40px;
@@ -605,24 +618,24 @@ iframe{
   display: none;
 }
 
-.project-title{
+.project-title {
   pointer-events: none;
 }
 
-.project-title-mask{
+.project-title-mask {
   margin-bottom: 80px;
 }
 
-.home-project-img{
+.home-project-img {
   height: 640px;
 }
 
-.home-projects-img .views-row{
+.home-projects-img .views-row {
   transform: scale(0);
   position: absolute;
   pointer-events: none;
-  &.active{
-    transition: .4s transform;
+  &.active {
+    transition: 0.4s transform;
     transform: scale(1);
   }
 }
@@ -632,22 +645,22 @@ iframe{
   width: 100px;
 }
 
-.star--md{
+.star--md {
   height: 140px;
   width: 140px;
 }
 
-.star--inline{
-    margin: 0 -32px 32px -32px;
+.star--inline {
+  margin: 0 -32px 32px -32px;
 }
 
-.caption{
+.caption {
   padding-top: 16px;
   font-style: italic;
 }
 
 .cmd-methods,
-.project-outro{
+.project-outro {
   @include make-col-ready();
   @include make-col(10);
   @include make-col-offset(1);
@@ -658,26 +671,26 @@ iframe{
 
 .cmd-method,
 .project-conclusion,
-.project-future{
+.project-future {
   @include make-col-ready();
   @include make-col(6);
 }
 
 .cmd-method-content,
-.textfield{
+.textfield {
   padding: 32px;
   margin-bottom: 32px;
   backdrop-filter: brightness($brightness);
   border-radius: $border-radius;
 }
 
-.cmd-method-header{
+.cmd-method-header {
   display: flex;
   align-items: center;
   padding-bottom: 16px;
 }
 
-.cmd-method-logo{
+.cmd-method-logo {
   height: 40px;
   width: 40px;
   margin-right: 16px;
@@ -685,43 +698,42 @@ iframe{
 }
 
 .about,
-.project-intro{
+.project-intro {
   @include make-col-ready();
   @include make-col(10);
-  @include make-col-offset(1)
+  @include make-col-offset(1);
 }
 
-.project-outro{
-
+.project-outro {
 }
 
-.section--about{
+.section--about {
   margin-top: 400px;
   position: relative;
 }
 
-.reveal-span{
-  opacity: .2;
+.reveal-span {
+  opacity: 0.2;
 }
 
-.star--3d{
+.star--3d {
   height: 160px;
   width: 160px;
   object-fit: contain;
   border: none;
 }
 
-.star--3d-1{
+.star--3d-1 {
   top: 320px;
   left: 64px;
 }
 
-.star--3d-2{
+.star--3d-2 {
   top: 40px;
   right: 40px;
 }
 
-.about-img{
+.about-img {
   height: 560px;
   width: 400px;
   object-fit: cover;
@@ -730,11 +742,11 @@ iframe{
   z-index: -1;
 }
 
-.about-el{
+.about-el {
   position: absolute;
 }
 
-.curve{
+.curve {
   width: 100vw;
   height: 100px;
   border: solid 5px $primary;
@@ -743,55 +755,55 @@ iframe{
   transform: scale(1.2);
 }
 
-.usp{
-  @include make-row()
+.usp {
+  @include make-row();
 }
 
-.usp-title{
+.usp-title {
   @include make-col-ready();
   @include make-col();
-  @include make-col-offset(1)
+  @include make-col-offset(1);
 }
 
-.usp-body{
+.usp-body {
   @include make-col-ready();
   @include make-col(6);
-  @include make-col-offset(4)
+  @include make-col-offset(4);
 }
 
-.service{
+.service {
   @include make-col-ready();
   @include make-col(10);
   display: flex;
   align-items: center;
 }
 
-.service-row{
-  @include make-row()
+.service-row {
+  @include make-row();
 }
 
-.service-title{
+.service-title {
   white-space: nowrap;
 }
 
 .service-title + .service-img,
-.service-img + .service-title{
+.service-img + .service-title {
   margin-left: 32px;
 }
 
-.service-img{
+.service-img {
   height: 120px;
   width: 240px;
 }
 
-.service-img--star{
+.service-img--star {
   object-fit: contain;
   width: 160px;
   height: 160px;
   margin-left: 64px;
 }
 
-.transition{
+.transition {
   height: 100vh;
   width: 100vw;
   backdrop-filter: brightness($brightness) blur(80px);
@@ -802,8 +814,7 @@ iframe{
   align-items: center;
 }
 
-.transition-logo{
+.transition-logo {
   height: 48px;
   width: 48px;
 }
-
