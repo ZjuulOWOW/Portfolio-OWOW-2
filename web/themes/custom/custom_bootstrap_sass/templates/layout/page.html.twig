@@ -71,7 +71,6 @@
 
 
 {% include directory ~ '/templates/layout/partials/header.html.twig' %}
-<div class="barba-wrapper" data-barba="wrapper">
 
 {% if node %}
 	{% block content %}
@@ -80,7 +79,6 @@
 {% else %}
 			{{ page.content }}
 {% endif %}
-</div>
 
 {#{% if page.content_blocks|render|striptags|trim is not empty %}#}
 {#<section class="section section--white">#}

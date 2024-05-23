@@ -42,7 +42,7 @@ async function createPageTransition(options) {
             afterLeave({ current }) {
                 current.container.remove()
             },
-            beforeEnter(){
+            beforeEnter() {
                 init()
                 window.scrollTo(0, 0)
             },

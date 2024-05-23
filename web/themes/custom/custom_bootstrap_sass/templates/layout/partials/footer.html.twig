@@ -1,22 +1,19 @@
 <footer>
-{#  {% set items = simplify_menu('footer') %}#}
-{#  <div class="container-fluid footer-container">#}
-{#    <div class="row">#}
-{#      <div class="footer-title">#}
-{#        <h1>#}
-{#          {{ items.menu_tree.0.text }}#}
-{#        </h1>#}
-{#      </div>#}
-{#      <div class="footer-cta">#}
-{#        <a href="{{ items.menu_tree.0.url }}" class="footer-link">#}
-{#          <i class="bi bi-arrow-right-short footer-link-arrow"></i>#}
-{#        </a>#}
-{#      </div>#}
-{#    </div>#}
-{#    <video class="logo--3d footer-logo" height="1000" autoplay muted loop>#}
-{#      <source src="./themes/custom/custom_bootstrap_sass/images/3dlogo.mov" type="video/mp4" >#}
-{#    </video>#}
-{#  </div>#}
-{#  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.81/build/spline-viewer.js"></script>#}
-{#  <spline-viewer url="https://prod.spline.design/lRSYqrFGhyrnwpwh/scene.splinecode" loading="eager" ></spline-viewer>#}
-{#</footer>#}
+    {% set items = simplify_menu('footer') %}
+    <div class="container-fluid footer-container">
+        <div class="row footer-links">
+            <div class="footer-link">
+                <a href="{{ items.menu_tree.0.url }}"> Leeswijzer</a>
+            </div>
+            <div class="footer-link">
+                <a href="{{ items.menu_tree.0.url }}"> Contact</a>
+            </div>
+            <div class="footer-link">
+                <a href="{{ items.menu_tree.0.url }}"> Projecten</a>
+            </div>
+        </div>
+    </div>
+    <h1 class="footer-marquee">
+        Zjuul Rovers - create developer -&nbsp
+    </h1>
+</footer>

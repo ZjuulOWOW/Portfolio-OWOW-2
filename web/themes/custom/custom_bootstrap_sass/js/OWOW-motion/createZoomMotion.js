@@ -12,6 +12,7 @@ async function createZoomMotion(target, options) {
 
     const {
         direction: motionDirection = "in",
+        trigger: motionTrigger = targetElement,
         ease: motionEase = "ease",
         scale: motionScale = 2,
         start: motionStart = "top",
@@ -20,15 +21,18 @@ async function createZoomMotion(target, options) {
     } = options
 
     const animationDirection = motionDirection === "in" ? gsap.to : gsap.from
-    animationDirection(targetElement, {
+    if (window.zoomMotion) {
+        window.zoomMotion.kill()
+    }
+    window.zoomMotion = animationDirection(targetElement, {
         scrollTrigger: {
-            trigger: targetElement,
-            start: `${motionStart} top`,
+            trigger: motionTrigger,
+            start: `${motionStart}`,
             end: `bottom+=${motionEnd} bottom`,
             scrub: true,
         },
         ease: motionEase,
-        scale: motionScale,
+        clipPath: `inset(0 ${motionScale}px)`,
     })
 
     // to do: only trigger if pin is not a boolean, make sure pin: true works too

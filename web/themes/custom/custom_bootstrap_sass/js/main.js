@@ -1,16 +1,43 @@
 import { createPageTransition } from "./OWOW-motion/createPageTransition.js"
 import { createZoomMotion } from "./OWOW-motion/createZoomMotion.js"
 import { initHome } from "./home.js"
+import {
+    createMarquee,
+    createMotion,
+} from "https://cdn.skypack.dev/@owowagency/gsap-motion"
+
+createMarquee(".footer-marquee", {
+    speed: 2,
+    scrollVelocity: .03,
+})
 
 const init = () => {
-    createZoomMotion("main", {
+    window.footerMotion && window.footerMotion.kill()
+    window.footerMotion = gsap.fromTo(
+        "footer",
+        { y: -160 },
+        {
+            scrollTrigger: {
+                trigger: "footer",
+                start: "top bottom",
+                end: "bottom bottom",
+                scrub: true,
+            },
+            y: 0,
+        }
+    )
+    const targetContent = document.querySelector(".content")
+    const targetHeight = targetContent.getBoundingClientRect().height
+
+    createZoomMotion(".content", {
         direction: "in",
-        ease: "ease",
-        scale: 1.1,
-        start: "bottom bottom",
-        end: "bottom+=1000",
-        pin: true,
+        trigger: "footer",
+        ease: "linear",
+        scale: 40, // Scale is now based on the ratio of window height to content height
+        start: "top+=200 bottom",
+        end: "0",
     })
+
     createPageTransition({
         leave: [
             {
@@ -27,7 +54,7 @@ const init = () => {
             {
                 target: "main",
                 keyframes: {
-                    transform: ["scale(1)", "scale(.95)"],
+                    paddingTop: "80px",
                 },
                 duration: 1000,
                 ease: "ease",
@@ -56,8 +83,7 @@ const init = () => {
             {
                 target: "main",
                 keyframes: {
-                    transform: ["translate3d(0,80px,0)", "translate3d(0,0,0)"],
-                    opacity: [0, 1],
+                    paddingTop: ["80px", "0px"],
                 },
                 duration: 1000,
                 ease: "ease",
@@ -65,7 +91,10 @@ const init = () => {
             {
                 target: ".transition-logo",
                 keyframes: {
-                    transform: ["rotate3d(0, 1, 0, 180deg)", "rotate3d(0, 1, 0, 0)"],
+                    transform: [
+                        "rotate3d(0, 1, 0, 180deg)",
+                        "rotate3d(0, 1, 0, 0)",
+                    ],
                 },
                 duration: 1000,
                 ease: "ease-out",
