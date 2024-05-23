@@ -145,8 +145,7 @@ const init = () => {
                 trigger: text,
                 start: "-100px center",
                 end: "bottom-=240px center",
-                scrub: true,
-                markers: true
+                scrub: 2,
             },
             opacity: 1,
             stagger: 0.1,
