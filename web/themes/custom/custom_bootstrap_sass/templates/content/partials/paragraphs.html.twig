@@ -21,6 +21,9 @@
       {% if paragraphType == 'button' %}
         {% include directory ~ '/templates/content/partials/paragraphs/button.html.twig' %}
       {% endif %}
+      {% if paragraphType == 'quote' %}
+        {% include directory ~ '/templates/content/partials/paragraphs/quote.html.twig' %}
+      {% endif %}
     {% endif %}
   {% endfor %}
 

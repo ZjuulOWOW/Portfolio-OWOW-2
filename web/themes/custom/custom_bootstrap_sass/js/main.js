@@ -140,18 +140,20 @@ const init = () => {
             span.appendChild(content)
             text.appendChild(span)
         })
+        gsap.to(text.querySelectorAll('.reveal-span'), {
+            scrollTrigger: {
+                trigger: text,
+                start: "-100px center",
+                end: "bottom-=240px center",
+                scrub: true,
+                markers: true
+            },
+            opacity: 1,
+            stagger: 0.1,
+        })
     })
 
-    gsap.to(".reveal-span", {
-        scrollTrigger: {
-            trigger: ".reveal",
-            start: "-100px center",
-            end: "bottom-=240px center",
-            scrub: 1,
-        },
-        opacity: 1,
-        stagger: 1,
-    })
+   
     //menu
 
     const menu = document.querySelector(".nav-menu-btn")
