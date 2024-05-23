@@ -44,7 +44,11 @@
   {{ title_suffix }}
   {% block content %}
     <div{{ content_attributes.addClass('content') }}>
-      {{ content }}
+      <div class="barba-wrapper" data-barba="wrapper">
+
+        {{ content }}
+</div>
+
     </div>
   {% endblock %}
 </div>
