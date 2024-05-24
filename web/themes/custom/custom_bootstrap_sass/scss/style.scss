@@ -231,8 +231,8 @@ footer {
     width: fit-content;
     padding: 0;
     & > a {
-      color: $secondary;
-  }
+        color: $secondary;
+    }
 }
 
 // Buttons
@@ -277,6 +277,12 @@ footer {
     display: flex;
     justify-content: space-between;
     width: fit-content;
+    border: 1px solid $primary;
+    border-radius: $border-radius;
+    padding: 8px 24px 8px 16px;
+    &:before {
+        display: none;
+    }
     &:after {
         font-family: "bootstrap-icons";
         content: "\F135";
@@ -284,6 +290,12 @@ footer {
         font-size: 32px;
         margin-left: 4px;
         line-height: 0;
+        transition: 0.2s;
+    }
+    &:hover {
+        &:after {
+            transform: translateX(8px);
+        }
     }
 }
 
@@ -350,8 +362,14 @@ hr {
 
 // Sections
 
+    // Heavy selectors
+
 section {
     margin-top: 240px;
+}
+
+.section--par{
+    margin-top: 80px;
 }
 
 section:first-of-type {
@@ -367,16 +385,42 @@ section:first-of-type {
     padding-top: 0 !important;
 }
 
-.section--media + .section--text {
-    margin-top: 40px;
-}
-
-.section--par + .section--par {
-    margin-top: 80px;
-}
-
 .section--service {
     margin-top: 400px;
+}
+
+.section--linked + .section--linked{
+    margin-top: 0;
+    .textfield {
+        border-radius: 0;
+    }
+}
+
+*:not(.section--linked) + .section--button + .section--linked {
+    margin-top: 80px;
+    .textfield {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+}
+
+.section--title + .section--par {
+    margin-top: 0;
+}
+
+*:not(.section--linked) + .section--linked {
+    .textfield {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+}
+
+.section--linked:not(:has(+ .section--linked)) {
+    .textfield,
+    .buttonfield {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
 }
 
 // Paragraphs
@@ -416,7 +460,7 @@ section:first-of-type {
 
 .par-button {
     @include make-col-ready();
-    @include make-col();
+    @include make-col(8);
     @include make-col-offset(1);
 }
 
@@ -636,10 +680,18 @@ iframe {
 }
 
 .cmd-method-content,
-.textfield {
+.textfield,
+.section--linked + .section--linked .buttonfield {
     padding: 32px;
-    margin-bottom: 32px;
     backdrop-filter: brightness($brightness);
+}
+
+.section--linked + .section--linked .buttonfield {
+    padding-top: 0;
+}
+
+.cmd-method-content {
+    margin-bottom: 32px;
     border-radius: $border-radius;
 }
 
@@ -662,9 +714,6 @@ iframe {
     @include make-col(10);
     @include make-col-offset(1);
     z-index: 1;
-}
-
-.project-outro {
 }
 
 .section--about {
