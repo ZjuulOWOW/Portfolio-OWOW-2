@@ -211,6 +211,8 @@ footer {
 .footer-marquee {
     color: $secondary;
     white-space: nowrap;
+    margin-bottom: 0;
+    line-height: .75;
 }
 
 .footer-links {
