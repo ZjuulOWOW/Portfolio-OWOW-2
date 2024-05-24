@@ -147,8 +147,8 @@ body.scrolldown header {
     top: -100vh;
     padding-bottom: 40px;
     z-index: 4;
-    transition: top 1s cubic-bezier(0.16, 1, 0.3, 1);
     &.is-active {
+        transition: top 1s cubic-bezier(0.16, 1, 0.3, 1);
         top: 0;
     }
 }
