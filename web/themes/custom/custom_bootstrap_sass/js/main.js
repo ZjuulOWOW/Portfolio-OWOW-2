@@ -8,10 +8,19 @@ import {
 
 createMarquee(".footer-marquee", {
     speed: 2,
-    scrollVelocity: .03,
+    scrollVelocity: 0.03,
+})
+
+const menuIcon = document.querySelector(".nav-menu-btn")
+const menu = document.querySelector(".menu")
+menuIcon.addEventListener("click", function () {
+    menu.classList.toggle("is-active")
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    document.body.style.height = "100vh"
 })
 
 const init = () => {
+    menu.classList.remove("is-active")
     window.footerMotion && window.footerMotion.kill()
     window.footerMotion = gsap.fromTo(
         "footer",
@@ -47,6 +56,9 @@ const init = () => {
                         "translate3D(0, 100vh, 0)",
                         "translate3D(0, 0, 0)",
                     ],
+                    borderRadius: ["50%", "0"],
+                    backdropFilter: ["brightness(1) blur(0)", "brightness(.2) blur(100px)", ]
+
                 },
                 duration: 1000,
                 ease: "cubic-bezier(0,1,1,1)",
@@ -78,7 +90,7 @@ const init = () => {
                     ],
                 },
                 duration: 1000,
-                ease: "cubic-bezier(0,1,1,1)",
+                ease: "ease",
             },
             {
                 target: "main",
@@ -140,7 +152,7 @@ const init = () => {
             span.appendChild(content)
             text.appendChild(span)
         })
-        gsap.to(text.querySelectorAll('.reveal-span'), {
+        gsap.to(text.querySelectorAll(".reveal-span"), {
             scrollTrigger: {
                 trigger: text,
                 start: "-100px center",
@@ -152,15 +164,6 @@ const init = () => {
         })
     })
 
-   
-    //menu
-
-    const menu = document.querySelector(".nav-menu-btn")
-    menu.addEventListener("click", function () {
-        document.querySelector(".menu").classList.toggle("is-active")
-        window.scrollTo({ top: 0, behavior: "smooth" })
-        document.body.style.height = "100vh"
-    })
     initHome()
 }
 init()

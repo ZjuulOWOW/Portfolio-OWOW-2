@@ -133,13 +133,7 @@ body.scrolldown header {
 .menu .nav-link.active {
     color: $secondary !important;
     &:hover {
-        color: $primary !important;
-    }
-    &:before {
-        content: "\F135";
-        font-family: bootstrap-icons;
-        font-size: $h2-font-size;
-        display: block;
+        color: $secondary !important;
     }
 }
 
@@ -524,6 +518,7 @@ section:first-of-type {
 .hoop {
     border-radius: 50%;
     border: 5px solid $primary;
+    pointer-events: none;
 }
 
 .hoop-mask {
@@ -536,6 +531,7 @@ section:first-of-type {
     transform: translatey(15vh);
     z-index: 3;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .hoop--landing,
@@ -816,7 +812,6 @@ iframe {
     height: 100vh;
     width: 100vw;
     transform: translateY(100%);
-    backdrop-filter: brightness($brightness) blur(80px);
     position: fixed;
     z-index: 9;
     display: flex;
