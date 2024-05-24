@@ -356,13 +356,13 @@ hr {
 
 // Sections
 
-    // Heavy selectors
+// Heavy selectors
 
 section {
     margin-top: 240px;
 }
 
-.section--par{
+.section--par {
     margin-top: 80px;
 }
 
@@ -383,7 +383,7 @@ section:first-of-type {
     margin-top: 400px;
 }
 
-.section--linked + .section--linked{
+.section--linked + .section--linked {
     margin-top: 0;
     .textfield {
         border-radius: 0;
@@ -485,7 +485,10 @@ section:first-of-type {
     @include make-col(12);
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
+    overflow-y: clip;
+    & > h1 {
+        transform: translateY(160px);
+    }
 }
 
 .landing-cta {
@@ -493,6 +496,7 @@ section:first-of-type {
     @include make-col();
     @include make-col-offset(10);
     padding-top: 120px;
+    z-index: 1;
 }
 
 .container--landing {
@@ -715,6 +719,7 @@ iframe {
 
 .section--about {
     margin-top: 400px;
+    margin-bottom: 320px;
     position: relative;
 }
 
@@ -826,7 +831,7 @@ iframe {
     border-radius: 0;
 }
 
-.video{
+.video {
     width: 100%;
     border-radius: $border-radius;
     align-self: flex-end;

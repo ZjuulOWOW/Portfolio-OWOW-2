@@ -19,7 +19,22 @@ menuIcon.addEventListener("click", function () {
     document.body.style.height = "100vh"
 })
 
+function calculateFontSize() {
+    const base = 4
+    const scaleFactor = 0.004
+    const newFontSize = base + window.innerWidth * scaleFactor
+    console.log(newFontSize + "rem")
+    const allTitles = document.querySelectorAll("h1")
+    allTitles.forEach((title) => {
+        title.style.fontSize = `${newFontSize}rem`
+    })
+}
+
+window.addEventListener("resize", calculateFontSize)
+calculateFontSize()
+
 const init = () => {
+    document.querySelector(".content").style.clipPath = "none"
     menu.classList.remove("is-active")
     window.footerMotion && window.footerMotion.kill()
     window.footerMotion = gsap.fromTo(
@@ -57,8 +72,10 @@ const init = () => {
                         "translate3D(0, 0, 0)",
                     ],
                     borderRadius: ["50%", "0"],
-                    backdropFilter: ["brightness(1) blur(0)", "brightness(.2) blur(100px)", ]
-
+                    backdropFilter: [
+                        "brightness(1) blur(0)",
+                        "brightness(.2) blur(100px)",
+                    ],
                 },
                 duration: 1000,
                 ease: "cubic-bezier(0,1,1,1)",
@@ -116,8 +133,16 @@ const init = () => {
 
     //Parallax
     const parallax = document.querySelectorAll(".parallax")
+    const homeProjectsParallax = document.querySelectorAll(".parallax")
+    homeProjectsParallax.forEach((p, i) => {
+        console.log(i)
+        new simpleParallax(p, {
+            scale: 1.2,
+            delay: i * 1.5
+        })
+    })
     new simpleParallax(parallax, {
-        scale: 1.1
+        scale: 1.1,
     })
     //Logo
     var vh = window.innerHeight
@@ -125,14 +150,14 @@ const init = () => {
     var logo = document.getElementById("js-logo")
 
     //Landing intro
-    gsap.from(".project-title, .landing-title--1", {
-        y: 160,
+    gsap.to(".project-title, .landing-title--1", {
+        y: 0,
         duration: 1,
         ease: "expo",
         delay: 0.4,
     })
-    gsap.from(".landing-title--2", {
-        y: 160,
+    gsap.to(".landing-title--2", {
+        y: 0,
         duration: 1,
         ease: "expo",
         delay: 0.5,
