@@ -16,7 +16,7 @@
       {% if paragraph.entity.field_media.entity.field_media_video_file%}
         {% for vid in paragraph.entity.field_media %}
           <div class="par-media par-media--{{ loop.length }} ">
-            <video controls class="parallax video" src="../web/sites/default/files{{ vid.entity.field_media_video_file.entity.uri.value | replace({'public:/': ''}) }}" type="video/mp4"></video>
+            <video controls class="video" src="../web/sites/default/files{{ vid.entity.field_media_video_file.entity.uri.value | replace({'public:/': ''}) }}" type="video/mp4"></video>
           </div>
         {% endfor %}
       {% endif %}
