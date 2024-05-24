@@ -450,6 +450,7 @@ section:first-of-type {
     &--3 {
         @include make-col(3);
     }
+    display: flex;
 }
 
 .par-button {
@@ -828,4 +829,5 @@ iframe {
 .video{
     width: 100%;
     border-radius: $border-radius;
+    align-self: flex-end;
 }

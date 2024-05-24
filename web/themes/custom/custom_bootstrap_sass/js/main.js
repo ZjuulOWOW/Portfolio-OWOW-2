@@ -116,7 +116,9 @@ const init = () => {
 
     //Parallax
     const parallax = document.querySelectorAll(".parallax")
-    new simpleParallax(parallax, {})
+    new simpleParallax(parallax, {
+        scale: 1.1
+    })
     //Logo
     var vh = window.innerHeight
     var tl = gsap.timeline()
