@@ -482,6 +482,10 @@ section:first-of-type {
     }
 }
 
+.landing-titles{
+    margin: 0 80px
+}
+
 .title-mask {
     @include make-col-ready();
     @include make-col(12);
@@ -495,8 +499,9 @@ section:first-of-type {
 
 .landing-cta {
     @include make-col-ready();
-    @include make-col();
-    @include make-col-offset(10);
+    @include make-col(11);
+    display: flex;
+    justify-content: flex-end;
     padding-top: 120px;
     z-index: 1;
 }
