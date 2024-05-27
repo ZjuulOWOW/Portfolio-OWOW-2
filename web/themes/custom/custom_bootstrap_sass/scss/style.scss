@@ -40,7 +40,7 @@ body {
 
 .barba-main {
     background: $secondary;
-    padding-bottom: 400px;
+    padding-bottom: 320px;
 }
 
 // Header
@@ -711,10 +711,15 @@ iframe {
     border-radius: 50%;
 }
 
-.about,
 .project-intro {
     @include make-col-ready();
     @include make-col(10);
+    @include make-col-offset(1);
+}
+
+.about{
+    @include make-col-ready();
+    @include make-col(9);
     @include make-col-offset(1);
     z-index: 1;
 }
@@ -761,6 +766,12 @@ iframe {
 
 .about-text{
     font-size: $font-size-base * 4
+}
+
+.about-cta{
+    @include make-col-ready();
+    @include make-col();
+    padding-top: 80px;
 }
 
 .curve {
