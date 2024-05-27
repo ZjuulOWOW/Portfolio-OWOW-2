@@ -144,20 +144,18 @@ const init = () => {
     })
     //Logo
 
-    const logoContainer = document.querySelector(".section--landing")
-    if (logoContainer) {
-        const oldLogo = document.getElementById("js-logo")
-        oldLogo && logoContainer.removeChild(oldLogo)
-        console.log('init')
-        const newLogo = document.createElement("spline-viewer")
-        newLogo.setAttribute("class", "logo--3d")
-        newLogo.setAttribute("id", "js-logo")
-        newLogo.setAttribute("loading", "eager")
-        newLogo.setAttribute(
-            "url",
-            "https://prod.spline.design/U2kajozBtuhH3ozm/scene.splinecode"
-        )
-        logoContainer.appendChild(newLogo)
+    if (document.querySelector('[data-barba-namespace="home"]')) {
+        const splineScript = document.getElementById("spline-script")
+        if (splineScript) {
+            splineScript.remove()
+        }
+        var newScript = document.createElement("script")
+        newScript.id = "spline-script"
+        newScript.src =
+            "https://unpkg.com/@splinetool/viewer@1.0.87/build/spline-viewer.js"
+        newScript.type = "module"
+        const scriptContainer = document.querySelector(".barba-main")
+        scriptContainer.appendChild(newScript)
         //Landing intro
         gsap.to(".landing-title--1", {
             y: 0,
@@ -171,10 +169,10 @@ const init = () => {
             ease: "expo",
             delay: 0.5,
         })
-        // gsap.from(newLogo, {
-        //     delay: 1.6,
-        //     scale: 0,
-        // })
+        gsap.from("#js-logo", {
+            delay: 1.6,
+            scale: 0,
+        })
     }
 
     gsap.to(".project-title", {
