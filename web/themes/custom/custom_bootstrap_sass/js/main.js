@@ -23,7 +23,6 @@ function calculateFontSize() {
     const base = 4
     const scaleFactor = 0.004
     const newFontSize = base + window.innerWidth * scaleFactor
-    console.log(newFontSize + "rem")
     const allTitles = document.querySelectorAll("h1")
     allTitles.forEach((title) => {
         title.style.fontSize = `${newFontSize}rem`
@@ -135,36 +134,54 @@ const init = () => {
     const parallax = document.querySelectorAll(".parallax")
     const homeProjectsParallax = document.querySelectorAll(".parallax")
     homeProjectsParallax.forEach((p, i) => {
-        console.log(i)
         new simpleParallax(p, {
             scale: 1.2,
-            delay: i * 1.5
+            delay: i * 1.5,
         })
     })
     new simpleParallax(parallax, {
         scale: 1.1,
     })
     //Logo
-    var vh = window.innerHeight
-    var tl = gsap.timeline()
-    var logo = document.getElementById("js-logo")
 
-    //Landing intro
-    gsap.to(".project-title, .landing-title--1", {
+    const logoContainer = document.querySelector(".section--landing")
+    if (logoContainer) {
+        const oldLogo = document.getElementById("js-logo")
+        oldLogo && logoContainer.removeChild(oldLogo)
+        console.log('init')
+        const newLogo = document.createElement("spline-viewer")
+        newLogo.setAttribute("class", "logo--3d")
+        newLogo.setAttribute("id", "js-logo")
+        newLogo.setAttribute("loading", "eager")
+        newLogo.setAttribute(
+            "url",
+            "https://prod.spline.design/U2kajozBtuhH3ozm/scene.splinecode"
+        )
+        logoContainer.appendChild(newLogo)
+        //Landing intro
+        gsap.to(".landing-title--1", {
+            y: 0,
+            duration: 1,
+            ease: "expo",
+            delay: 0.4,
+        })
+        gsap.to(".landing-title--2", {
+            y: 0,
+            duration: 1,
+            ease: "expo",
+            delay: 0.5,
+        })
+        // gsap.from(newLogo, {
+        //     delay: 1.6,
+        //     scale: 0,
+        // })
+    }
+
+    gsap.to(".project-title", {
         y: 0,
         duration: 1,
         ease: "expo",
         delay: 0.4,
-    })
-    gsap.to(".landing-title--2", {
-        y: 0,
-        duration: 1,
-        ease: "expo",
-        delay: 0.5,
-    })
-    gsap.from(logo, {
-        delay: 1.6,
-        scale: 0,
     })
 
     //Text reveal
