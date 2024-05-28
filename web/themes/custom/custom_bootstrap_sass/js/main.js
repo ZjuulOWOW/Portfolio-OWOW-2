@@ -33,6 +33,7 @@ window.addEventListener("resize", calculateFontSize)
 calculateFontSize()
 
 const init = () => {
+    calculateFontSize()
     document.querySelector(".content").style.clipPath = "none"
     menu.classList.remove("is-active")
     window.footerMotion && window.footerMotion.kill()
