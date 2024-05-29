@@ -23,13 +23,19 @@ async function createZoomMotion(target, options) {
     const animationDirection = motionDirection === "in" ? gsap.to : gsap.from
     if (window.zoomMotion) {
         window.zoomMotion.kill()
+        ScrollTrigger.refresh()
     }
+    gsap.config({
+        force3D: true,
+    })
+
     window.zoomMotion = animationDirection(targetElement, {
         scrollTrigger: {
             trigger: motionTrigger,
             start: `${motionStart}`,
             end: `bottom+=${motionEnd} bottom`,
             scrub: true,
+            markers: true,
         },
         ease: motionEase,
         clipPath: `inset(0 ${motionScale}px)`,

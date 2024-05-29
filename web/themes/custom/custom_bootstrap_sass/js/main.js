@@ -36,7 +36,6 @@ const init = () => {
     calculateFontSize()
     document.querySelector(".content").style.clipPath = "none"
     menu.classList.remove("is-active")
-    window.footerMotion && window.footerMotion.kill()
     window.footerMotion = gsap.fromTo(
         "footer",
         { y: -160 },
@@ -46,6 +45,7 @@ const init = () => {
                 start: "top bottom",
                 end: "bottom bottom",
                 scrub: true,
+                // markers: truex,
             },
             y: 0,
         }
