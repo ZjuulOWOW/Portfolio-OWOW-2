@@ -45,7 +45,6 @@ const init = () => {
                 start: "top bottom",
                 end: "bottom bottom",
                 scrub: true,
-                // markers: truex,
             },
             y: 0,
         }

@@ -35,7 +35,6 @@ async function createZoomMotion(target, options) {
             start: `${motionStart}`,
             end: `bottom+=${motionEnd} bottom`,
             scrub: true,
-            markers: true,
         },
         ease: motionEase,
         clipPath: `inset(0 ${motionScale}px)`,
