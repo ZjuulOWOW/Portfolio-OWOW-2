@@ -517,7 +517,6 @@ section:first-of-type {
 .logo--3d {
     position: absolute;
     height: 500px;
-    z-index: 1;
     pointer-events: none;
     &:after {
         content: "";
@@ -535,6 +534,7 @@ section:first-of-type {
     border-radius: 50%;
     border: 5px solid $primary;
     pointer-events: none;
+    z-index: -1;
 }
 
 .hoop-mask {
