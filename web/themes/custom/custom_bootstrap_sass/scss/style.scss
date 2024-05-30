@@ -513,6 +513,7 @@ section:first-of-type {
     position: absolute;
     height: 500px;
     pointer-events: none;
+    z-index: 1;
     &:after {
         content: "";
         position: absolute;
@@ -529,7 +530,6 @@ section:first-of-type {
     border-radius: 50%;
     border: 5px solid $primary;
     pointer-events: none;
-    z-index: -1;
 }
 
 .hoop-mask {
@@ -811,7 +811,6 @@ iframe {
     object-fit: cover;
     top: 480px;
     right: 240px;
-    z-index: -1;
 }
 
 .about-el {
