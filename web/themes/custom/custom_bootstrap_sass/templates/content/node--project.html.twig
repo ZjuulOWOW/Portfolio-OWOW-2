@@ -58,48 +58,50 @@
             </div>
         </div>
     </section>
-    <section class="section--par">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="title">
-                    <h4>CMD methods</h4>
+    {% if node.field_cmd_methods %}
+        <section class="section--par">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="title">
+                        <h4>CMD methods</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="cmd-methods">
-                    {% for paragraph in node.field_cmd_methods %} {% set cat =
-                    paragraph.entity.field_category.value %} {% set method =
-                    paragraph.entity.field_method.value %}
-                    <div class="cmd-method">
-                        <div class="cmd-method-content">
-                            <div class="cmd-method-header">
-                                <img
-                                    class="cmd-method-logo"
-                                    src="./themes/custom/custom_bootstrap_sass/images/logo-{{
-                                        cat | lower
-                                    }}.png"
-                                    alt=""
-                                />
-                                <h5
-                                    class="m-0"
-                                    style="color: var(--{{ cat | lower }})"
-                                >
-                                    {{ method }}
-                                </h5>
-                            </div>
-                            <div class="cmd-method-body">
-                                {{
-                                    paragraph.entity.field_toelichting.value
-                                        | raw
-                                }}
+                <div class="row">
+                    <div class="cmd-methods">
+                        {% for paragraph in node.field_cmd_methods %} {% set cat =
+                        paragraph.entity.field_category.value %} {% set method =
+                        paragraph.entity.field_method.value %}
+                        <div class="cmd-method">
+                            <div class="cmd-method-content">
+                                <div class="cmd-method-header">
+                                    <img
+                                        class="cmd-method-logo"
+                                        src="./themes/custom/custom_bootstrap_sass/images/logo-{{
+                                            cat | lower
+                                        }}.png"
+                                        alt=""
+                                    />
+                                    <h5
+                                        class="m-0"
+                                        style="color: var(--{{ cat | lower }})"
+                                    >
+                                        {{ method }}
+                                    </h5>
+                                </div>
+                                <div class="cmd-method-body">
+                                    {{
+                                        paragraph.entity.field_toelichting.value
+                                            | raw
+                                    }}
+                                </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
     {% include directory ~ '/templates/content/partials/paragraphs.html.twig' %}
     <section class="section--par">
         <div class="container-fluid">

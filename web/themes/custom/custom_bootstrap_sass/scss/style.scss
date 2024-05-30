@@ -43,11 +43,6 @@ body {
     padding-bottom: 240px;
 }
 
-.content,
-.content * {
-    transform: translateZ(0);
-}
-
 // Header
 
 header {
@@ -497,7 +492,7 @@ section:first-of-type {
     flex-direction: column;
     overflow-y: clip;
     & > h1 {
-        transform: translateY(160px);
+        transform: translateY(100%);
     }
 }
 
