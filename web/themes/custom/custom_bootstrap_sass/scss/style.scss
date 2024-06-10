@@ -429,6 +429,9 @@ section:first-of-type {
     @include make-col-ready();
     @include make-col(8);
     @include make-col-offset(1);
+    @include media-breakpoint-up(xxl) {
+        @include make-col(4);
+    }
 }
 
 .par-media {
@@ -814,8 +817,8 @@ iframe {
 }
 
 .about-img {
-    height: 560px;
-    width: 400px;
+    height: 30vw;
+    width: 20vw;
     object-fit: cover;
     top: 480px;
     right: 240px;

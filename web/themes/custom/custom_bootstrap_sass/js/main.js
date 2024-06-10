@@ -20,7 +20,7 @@ menuIcon.addEventListener("click", function () {
 })
 
 function calculateFontSize() {
-    const base = 4
+    const base = 3.5
     const scaleFactor = 0.004
     const newFontSize = base + window.innerWidth * scaleFactor
     const allTitles = document.querySelectorAll("h1")
