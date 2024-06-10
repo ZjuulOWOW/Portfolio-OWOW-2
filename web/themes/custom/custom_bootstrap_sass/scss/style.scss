@@ -397,7 +397,8 @@ section:first-of-type {
         border-top-left-radius: $border-radius;
         border-top-right-radius: $border-radius;
     }
-    .buttonfield { //ugly solution for two buttons after image
+    .buttonfield {
+        //ugly solution for two buttons after image
         background: none;
         padding: 0;
         margin-top: 0;
@@ -615,7 +616,7 @@ iframe {
     @include make-col-ready();
     @include make-col(8);
     @include make-col-offset(1);
-    &>.textfield {
+    & > .textfield {
         border-radius: $border-radius;
     }
 }
@@ -654,29 +655,29 @@ iframe {
     @include make-col-offset(1);
     display: flex;
     align-items: center;
-    &:before {
-        content: "";
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        margin-right: 8px;
-    }
+}
+
+.overview-project-color {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    margin-right: 8px;
 }
 
 .deelvraag- {
-    &1:before {
+    &1 {
         background: var(--dv1);
     }
-    &2:before {
+    &2 {
         background: var(--dv2);
     }
-    &3:before {
+    &3 {
         background: var(--dv3);
     }
-    &4:before {
+    &4 {
         background: var(--dv4);
     }
-    &5:before {
+    &5 {
         background: var(--dv5);
     }
 }
@@ -737,7 +738,7 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    .textfield{
+    .textfield {
         border-radius: $border-radius;
     }
 }
