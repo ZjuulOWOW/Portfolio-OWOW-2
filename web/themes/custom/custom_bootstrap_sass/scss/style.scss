@@ -615,6 +615,9 @@ iframe {
     @include make-col-ready();
     @include make-col(8);
     @include make-col-offset(1);
+    &>.textfield {
+        border-radius: $border-radius;
+    }
 }
 
 .home-projects .views-row {
