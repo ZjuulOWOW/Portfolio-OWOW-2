@@ -642,6 +642,9 @@ iframe {
         transition: 0.2s;
         position: absolute;
     }
+    &>.simpleParallax{
+        width: 100%;
+    }
     &:hover{
         &:after {
             transform: rotate(-10deg);
