@@ -3,7 +3,6 @@
     <div class="row">
       <div class="par-button">
         <div class="buttonfield">
-        {{ dump(paragraph.entity.field_button.0)}}
           <a href="{{ paragraph.entity.field_button.0.uri | replace({"internal:":""})}}" target="_blank" class="btn btn-primary btn-arrow">
             {{ paragraph.entity.field_button.0.title}}
           </a>
