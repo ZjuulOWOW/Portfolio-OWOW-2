@@ -19,7 +19,7 @@ menuIcon.addEventListener("click", function () {
     document.body.style.height = "100vh"
 })
 
-function calculateFontSize() {
+function resize() {
     const base = 3
     const scaleFactor = 0.003
     const newFontSize = base + window.innerWidth * scaleFactor
@@ -29,11 +29,11 @@ function calculateFontSize() {
     })
 }
 
-window.addEventListener("resize", calculateFontSize)
-calculateFontSize()
+window.addEventListener("resize", resize)
+resize()
 
 const init = () => {
-    calculateFontSize()
+    resize()
     document.querySelector(".content").style.clipPath = "none"
     menu.classList.remove("is-active")
     window.footerMotion = gsap.fromTo(
@@ -51,6 +51,19 @@ const init = () => {
     )
     const targetContent = document.querySelector(".content")
     const targetHeight = targetContent.getBoundingClientRect().height
+
+    //Parallax
+    const parallaxTargets = document.querySelectorAll(".parallax")
+    const homeProjectsParallax = document.querySelectorAll(".home-project-img")
+    homeProjectsParallax.forEach((p, i) => {
+        new simpleParallax(p, {
+            scale: 1.2,
+            delay: i * 1.5,
+        })
+    })
+    new simpleParallax(parallaxTargets, {
+        scale: 1.1,
+    })
 
     createZoomMotion(".content", {
         direction: "in",
@@ -130,18 +143,6 @@ const init = () => {
         ],
     })
 
-    //Parallax
-    const parallax = document.querySelectorAll(".parallax")
-    const homeProjectsParallax = document.querySelectorAll(".parallax")
-    homeProjectsParallax.forEach((p, i) => {
-        new simpleParallax(p, {
-            scale: 1.2,
-            delay: i * 1.5,
-        })
-    })
-    new simpleParallax(parallax, {
-        scale: 1.1,
-    })
     //Logo
 
     if (document.querySelector('[data-barba-namespace="home"]')) {
