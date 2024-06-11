@@ -631,6 +631,8 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    border-radius: $border-radius;
     &:after {
         font-family: "bootstrap-icons";
         content: "\F135";
