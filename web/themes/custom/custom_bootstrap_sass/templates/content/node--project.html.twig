@@ -128,11 +128,15 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="title">
-							<h4>Volgend project</h4>
+							<h4>Volgend project: {{node.field_cta.entity.title.value | raw}}</h4>
 						</div>
 					</div>
 					<div class="row">
-						{{ views.custom_bootstrap_sass_views_block__projects_block_3}}
+						<div class="col-12">
+							<a class="project-cta" href=".{{node.field_cta.entity.path.alias}}">
+								<img class="parallax" src="{{node.field_cta.entity.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic')}}">
+							</a>
+						</div>
 					</div>
 				</div>
 			</main>
