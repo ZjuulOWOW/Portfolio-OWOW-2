@@ -69,7 +69,7 @@ menuLinks.forEach((link, index) => {
     })
     link.addEventListener("mouseout", function () {
         menuEmoji.classList.remove("is-active")
-        menuHover = false
+        menuHover = false;
     })
 })
 
