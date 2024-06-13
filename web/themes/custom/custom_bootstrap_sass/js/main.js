@@ -3,6 +3,8 @@ import { createZoomMotion } from "./OWOW-motion/createZoomMotion.js"
 import { initHome } from "./home.js"
 import {
     createMarquee,
+    createPhysicsBasedMotion,
+    getMousePosition,
     createMotion,
 } from "https://cdn.skypack.dev/@owowagency/gsap-motion"
 
@@ -11,12 +13,75 @@ createMarquee(".footer-marquee", {
     scrollVelocity: 0.03,
 })
 
+//Menu motion
+const menuEmoji = document.querySelector(".menu-emoji")
+const speed = 1
+const damping = 0.6
+const response = 0
+let dynamicsX = createPhysicsBasedMotion(speed, damping, response, 0)
+let prevTime = 0
+let prevRotation = 0
+let menuHover = false
+let menuWidth = document
+    .querySelector(".menu-content")
+    .getBoundingClientRect().width
+const emojiWidth = menuEmoji.getBoundingClientRect().width
+const menuEmojiContent = ["🤝", "📖", "🗂️"]
+let isMenuActive = false
+
+const updateMenu = (currentTime) => {
+    const deltaTime = (currentTime - prevTime) / 1000
+    const mouseX = getMousePosition().client.x
+    if (deltaTime === 0) return
+    const targetX =
+        dynamicsX.update(deltaTime, mouseX) -
+        window.innerWidth -
+        emojiWidth / 2 +
+        menuWidth
+    const rotation = targetX
+    const delataRotation = (prevRotation - rotation) * 0.5
+    prevRotation = rotation
+    menuEmoji.style.transform = `translate3d(${targetX}px, 0, 0) skewX(${delataRotation}deg) `
+    prevTime = currentTime
+    menuHover
+        ? requestAnimationFrame(updateMenu)
+        : cancelAnimationFrame(updateMenu)
+}
+
 const menuIcon = document.querySelector(".nav-menu-btn")
 const menu = document.querySelector(".menu")
+const menuLinks = document.querySelectorAll(".menu-links .nav-link")
 menuIcon.addEventListener("click", function () {
     menu.classList.toggle("is-active")
-    window.scrollTo({ top: 0, behavior: "smooth" })
-    document.body.style.height = "100vh"
+    isMenuActive = !isMenuActive
+})
+
+menuLinks.forEach((link, index) => {
+    link.addEventListener("click", function () {
+        menu.classList.toggle("is-active")
+        document.body.style.height = "auto"
+    })
+    link.addEventListener("mouseover", function () {
+        menuHover = true
+        menuEmoji.textContent = menuEmojiContent[index]
+        menuEmoji.classList.add("is-active")
+        requestAnimationFrame(updateMenu)
+    })
+    link.addEventListener("mouseout", function () {
+        menuEmoji.classList.remove("is-active")
+        menuHover = false
+    })
+})
+
+const header = document.querySelector("header")
+
+window.addEventListener("scroll", function () {
+    if (this.oldScroll < this.scrollY && isMenuActive === false) {
+        header.classList.add("is-hidden")
+    } else {
+        header.classList.remove("is-hidden")
+    }
+    this.oldScroll = this.scrollY
 })
 
 function resize() {
@@ -27,6 +92,9 @@ function resize() {
     allTitles.forEach((title) => {
         title.style.fontSize = `${newFontSize}rem`
     })
+    menuWidth = document
+        .querySelector(".menu-content")
+        .getBoundingClientRect().width
 }
 
 window.addEventListener("resize", resize)
@@ -34,6 +102,7 @@ resize()
 
 const init = () => {
     resize()
+
     document.querySelector(".content").style.clipPath = "none"
     menu.classList.remove("is-active")
     window.footerMotion = gsap.fromTo(
