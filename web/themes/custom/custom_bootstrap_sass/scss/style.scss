@@ -132,6 +132,7 @@ header {
     pointer-events: none;
     z-index: 6;
     &.is-active {
+        pointer-events: all;
         .menu-content {
             transform: translate(0, 0);
         }
