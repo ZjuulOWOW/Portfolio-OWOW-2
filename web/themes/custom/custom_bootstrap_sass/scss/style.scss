@@ -129,6 +129,7 @@ header {
     position: fixed;
     display: flex;
     justify-content: flex-end;
+    pointer-events: none;
     z-index: 6;
     &.is-active {
         .menu-content {
