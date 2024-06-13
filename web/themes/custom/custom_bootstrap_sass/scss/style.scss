@@ -473,7 +473,7 @@ section:first-of-type {
     @include make-col(8);
     @include make-col-offset(1);
     @include media-breakpoint-up(xxl) {
-        @include make-col(4);
+        @include make-col(5);
     }
 }
 
@@ -510,7 +510,7 @@ section:first-of-type {
     @include make-col(8);
     @include make-col-offset(1);
     @include media-breakpoint-up(xxl) {
-        @include make-col(4);
+        @include make-col(5);
     }
 }
 
