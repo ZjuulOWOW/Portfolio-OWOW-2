@@ -106,6 +106,7 @@ const init = () => {
         const text = urlParams.get("fr") ? "leeswijzer" : "projecten"
         const breadcrumb = document.getElementById("js-breadcrumb")
         breadcrumb.innerHTML = `< Terug naar ${text}`
+        breadcrumb.href = `./${text}`
     }
 
     resize()
