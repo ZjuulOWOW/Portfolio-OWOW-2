@@ -151,21 +151,36 @@ const init = () => {
         end: "0",
     })
 
+    //Page transition
+
+    let backDropOptions = [
+        "brightness(1) blur(0)",
+        "brightness(.2) blur(100px)",
+    ]
+    let backgroundOptions
+
+    const safariAgent = navigator.userAgent.indexOf("Safari") > -1
+    const chromeAgent = navigator.userAgent.indexOf("Chrome") > -1
+    if (chromeAgent && safariAgent) safariAgent = false
+    if (safariAgent) {
+        backDropOptions = undefined
+        backgroundOptions = ["transparent", "#111111"]
+    }
+
+    const OverlayKeyframes = {
+        transform: ["translate3D(0, 100vh, 0)", "translate3D(0, 0, 0)"],
+        borderRadius: ["50%", "0"],
+        backdropFilter: backDropOptions,
+        backgroundColor: backgroundOptions
+    }
+
+    console.log(OverlayKeyframes)
+
     createPageTransition({
         leave: [
             {
                 target: ".transition",
-                keyframes: {
-                    transform: [
-                        "translate3D(0, 100vh, 0)",
-                        "translate3D(0, 0, 0)",
-                    ],
-                    borderRadius: ["50%", "0"],
-                    backdropFilter: [
-                        "brightness(1) blur(0)",
-                        "brightness(.2) blur(100px)",
-                    ],
-                },
+                keyframes: OverlayKeyframes,
                 duration: 1000,
                 ease: "cubic-bezier(0,1,1,1)",
             },
@@ -219,8 +234,7 @@ const init = () => {
             },
         ],
     })
-
-    //Logo
+    // Logo
 
     if (document.querySelector('[data-barba-namespace="home"]')) {
         const splineScript = document.getElementById("spline-script")
