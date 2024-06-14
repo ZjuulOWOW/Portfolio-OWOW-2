@@ -40,12 +40,20 @@ async function createPageTransition(options) {
                 })
             },
             afterLeave({ current }) {
-                scrollTo = current.namespace === 'project' && current.container.querySelector('.project-title').textContent.trim() 
+                scrollTo =
+                    current.namespace === "project" &&
+                    current.container
+                        .querySelector(".project-title")
+                        .textContent.trim()
                 current.container.remove()
             },
-            beforeEnter() {
+            beforeEnter({ next }) {
                 init()
-                scrollTo ? location.hash = `#${scrollTo}` : window.scrollTo(0, 0)
+                if (next.namespace === "leeswijzer") {
+                    scrollTo
+                        ? (location.hash = `#${scrollTo}`)
+                        : window.scrollTo(0, 0)
+                }
             },
             enter({ current, next }) {
                 const enterVars = transitionOptions.enterVars
