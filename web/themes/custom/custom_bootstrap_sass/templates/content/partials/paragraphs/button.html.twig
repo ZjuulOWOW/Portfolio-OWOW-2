@@ -3,7 +3,7 @@
     <div class="row">
       <div class="par-button">
         <div class="buttonfield">
-          <a href="{{ paragraph.entity.field_button.0.uri | replace({"internal:":""})}}" {% if not (paragraph.entity.field_button.0.uri starts with "internal:" )%} target="_blank" {% endif %} class="btn btn-primary btn-arrow">
+          <a id="{{paragraph.entity.field_button.0.title}}" href="{{ paragraph.entity.field_button.0.uri | replace({"internal:":""})}}" {% if not (paragraph.entity.field_button.0.uri starts with "internal:" )%} target="_blank" {% endif %} class="btn btn-primary btn-arrow">
             {{ paragraph.entity.field_button.0.title}}
           </a>
         </div>
