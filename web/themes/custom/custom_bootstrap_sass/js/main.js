@@ -159,8 +159,8 @@ const init = () => {
     ]
     let backgroundOptions
 
-    const safariAgent = navigator.userAgent.indexOf("Safari") > -1
-    const chromeAgent = navigator.userAgent.indexOf("Chrome") > -1
+    let safariAgent = navigator.userAgent.indexOf("Safari") > -1
+    let chromeAgent = navigator.userAgent.indexOf("Chrome") > -1
     if (chromeAgent && safariAgent) safariAgent = false
     if (safariAgent) {
         backDropOptions = undefined
