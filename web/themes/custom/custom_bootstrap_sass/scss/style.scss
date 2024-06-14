@@ -714,8 +714,18 @@ iframe {
     }
 }
 
-.project-cta {
-    height: 50vh;
+.project-cta{
+    @include make-col-ready();
+    @include make-col(6);
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+    }
+    hr{
+        margin: 40px 0 8px 0;
+    }
+}
+
+.project-cta-link {
     background-position: center;
     position: relative;
     display: flex;
@@ -723,6 +733,7 @@ iframe {
     align-items: center;
     overflow: hidden;
     border-radius: $border-radius;
+    flex-direction: column;
     &:after {
         font-family: "bootstrap-icons";
         content: "\F135";
@@ -742,6 +753,16 @@ iframe {
     }
     img {
         filter: brightness($brightness);
+    }
+    &--alt{
+        &:after{
+            content: "\F12C";
+        }
+        &:hover {
+            &:after {
+                transform: rotate(10deg);
+            }
+        }
     }
 }
 

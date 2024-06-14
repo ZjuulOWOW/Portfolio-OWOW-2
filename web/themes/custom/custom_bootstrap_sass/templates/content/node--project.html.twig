@@ -128,14 +128,23 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="title">
-							<h4>Volgend project: {{node.field_cta.entity.title.value | raw}}</h4>
+							<h4>Lees verder</h4>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-12">
-							<a class="project-cta" href=".{{node.field_cta.entity.path.alias}}">
+						<div class="project-cta">
+							<a class="project-cta-link project-cta-link--alt" href="./leeswijzer">
+								<img class="parallax" src="./themes/custom/custom_bootstrap_sass/images/books.png">
+							</a>
+							<hr>
+							<p>Terug naar leeswijzer</p>
+						</div>
+						<div class="project-cta">
+							<a class="project-cta-link" href=".{{node.field_cta.entity.path.alias}}">
 								<img class="parallax" src="{{node.field_cta.entity.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic')}}">
 							</a>
+							<hr>
+							<p>Volgend project: {{node.field_cta.entity.title.value | raw}}</p>
 						</div>
 					</div>
 				</div>
