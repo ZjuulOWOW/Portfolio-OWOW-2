@@ -49,10 +49,10 @@ async function createPageTransition(options) {
             },
             beforeEnter({ next }) {
                 init()
-                if (next.namespace === "leeswijzer") {
-                    scrollTo
-                        ? (location.hash = `#${scrollTo}`)
-                        : window.scrollTo(0, 0)
+                window.scrollTo(0, 0)
+                console.log(next.namespace)
+                if (next.namespace === "leeswijzer" && scrollTo) {
+                    location.hash = `#${scrollTo}`
                 }
             },
             enter({ current, next }) {
