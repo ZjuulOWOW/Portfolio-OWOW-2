@@ -751,9 +751,6 @@ iframe {
             transform: rotate(-10deg);
         }
     }
-    img {
-        filter: brightness($brightness);
-    }
     &--alt{
         &:after{
             content: "\F12C";
@@ -764,6 +761,11 @@ iframe {
             }
         }
     }
+}
+
+.project-cta-image{
+    filter: brightness($brightness);
+    height: 50vh
 }
 
 .home-projects .views-row {

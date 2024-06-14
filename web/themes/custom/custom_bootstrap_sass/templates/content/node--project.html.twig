@@ -134,14 +134,14 @@
 					<div class="row">
 						<div class="project-cta">
 							<a class="project-cta-link project-cta-link--alt" href="./leeswijzer">
-								<img class="parallax" src="./themes/custom/custom_bootstrap_sass/images/books.png">
+								<img class="parallax" src="./themes/custom/custom_bootstrap_sass/images/Books.png">
 							</a>
 							<hr>
 							<p>Terug naar leeswijzer</p>
 						</div>
 						<div class="project-cta">
 							<a class="project-cta-link" href=".{{node.field_cta.entity.path.alias}}">
-								<img class="parallax" src="{{node.field_cta.entity.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic')}}">
+								<img class="project-cta-image parallax" src="{{node.field_cta.entity.field_jumbo.entity.field_media_image.entity.uri.value | image_style('basic')}}">
 							</a>
 							<hr>
 							<p>Volgend project: {{node.field_cta.entity.title.value | raw}}</p>
