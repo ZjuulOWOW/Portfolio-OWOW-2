@@ -16,6 +16,7 @@ async function createPageTransition(options) {
     let transitionObjects = []
 
     let redirecting = false
+    let scrollTo
 
     const processTransitionOptions = (transitionOptions) => {
         transitionObjects.push({
@@ -27,7 +28,6 @@ async function createPageTransition(options) {
             },
             sync: transitionOptions.sync,
             leave({ current, next }) {
-                console.log(next.container)
                 const leaveVars = transitionOptions.leaveVars
                 leaveVars && leaveVars({ current, next })
                 document.body.classList.add("is-transitioning")
@@ -40,11 +40,12 @@ async function createPageTransition(options) {
                 })
             },
             afterLeave({ current }) {
+                scrollTo = current.namespace === 'project' && current.container.querySelector('.project-title').textContent.trim() 
                 current.container.remove()
             },
             beforeEnter() {
                 init()
-                window.scrollTo(0, 0)
+                scrollTo ? location.hash = `#${scrollTo}` : window.scrollTo(0, 0)
             },
             enter({ current, next }) {
                 const enterVars = transitionOptions.enterVars

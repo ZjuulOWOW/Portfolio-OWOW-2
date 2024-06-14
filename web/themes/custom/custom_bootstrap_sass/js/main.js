@@ -104,9 +104,10 @@ const init = () => {
         const queryString = window.location.search
         const urlParams = new URLSearchParams(queryString)
         const text = urlParams.get("fr") ? "leeswijzer" : "projecten"
+        let title = document.querySelector(".project-title").textContent.trim()
         const breadcrumb = document.getElementById("js-breadcrumb")
         breadcrumb.innerHTML = `< Terug naar ${text}`
-        breadcrumb.href = `./${text}`
+        breadcrumb.href = `./${text}#Documentatie prototyping`
     }
 
     resize()
