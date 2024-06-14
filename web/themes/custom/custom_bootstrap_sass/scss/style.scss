@@ -419,6 +419,9 @@ hr {
 
 section {
     margin-top: 240px;
+    @include media-breakpoint-down(xl) {
+        margin-top: 160px;
+    }
 }
 
 .section--par {
@@ -491,12 +494,19 @@ section:first-of-type {
     @include media-breakpoint-up(xxl) {
         @include make-col(5);
     }
+    @include media-breakpoint-down(md){
+        @include make-col(12);
+        @include make-col-offset(0);
+    }
 }
 
 .par-media {
     @include make-col-ready();
     &:first-of-type {
         @include make-col-offset(1);
+        @include media-breakpoint-down(md) {
+            @include make-col-offset(0);
+        }
     }
     & > iframe {
         aspect-ratio: 16 / 9;
@@ -511,14 +521,26 @@ section:first-of-type {
     }
     &--1 {
         @include make-col(5);
+        @include media-breakpoint-down(md) {
+            @include make-col(12);
+        }
     }
     &--2 {
         @include make-col(4);
+        @include media-breakpoint-down(md) {
+            @include make-col(12);
+        }
     }
     &--3 {
         @include make-col(3);
+        @include media-breakpoint-down(md) {
+            @include make-col(12);
+        }
     }
     display: flex;
+    @include media-breakpoint-down(md) {
+        margin-top: 40px
+    }
 }
 
 .par-button {
@@ -686,6 +708,10 @@ iframe {
     & > .textfield {
         border-radius: $border-radius;
     }
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        @include make-col-offset(0);
+    }
 }
 
 .project-cta {
@@ -725,6 +751,10 @@ iframe {
     hr {
         margin: 40px 0 8px 0;
     }
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        margin-bottom: 40px
+    }
 }
 
 .overview-project {
@@ -738,7 +768,13 @@ iframe {
     &:hover {
         & > .overview-project-img {
             display: block;
+            @include media-breakpoint-down(md) {
+                display: none;
+            }
         }
+    }
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
     }
 }
 
@@ -746,6 +782,10 @@ iframe {
     @include make-col-ready();
     @include make-col(3);
     @include make-col-offset(1);
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        @include make-col-offset(0);
+    }
 }
 
 .overview-project-deelvraag {
@@ -753,6 +793,11 @@ iframe {
     @include make-col-offset(1);
     display: flex;
     align-items: center;
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        @include make-col-offset(0);
+        margin-top: 16px;
+    }
 }
 
 .overview-project-color {
@@ -786,6 +831,9 @@ iframe {
     width: 320px;
     display: none;
     z-index: 1;
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
 }
 
 .project-title {
@@ -798,6 +846,9 @@ iframe {
 
 .home-project-img {
     height: 640px;
+    @include media-breakpoint-down(md) {
+        height: 320px;
+    }
 }
 
 .home-projects-img .views-row {
@@ -840,6 +891,10 @@ iframe {
     .textfield {
         border-radius: $border-radius;
     }
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        @include make-col-offset(0);
+    }
 }
 
 .cmd-method,
@@ -847,6 +902,16 @@ iframe {
 .project-future {
     @include make-col-ready();
     @include make-col(6);
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        @include make-col-offset(0);
+    }
+}
+
+.project-future{
+    @include media-breakpoint-down(md) {
+        margin-top: 40px;
+    }
 }
 
 .cmd-method-content,
@@ -889,12 +954,20 @@ iframe {
     @include make-col(9);
     @include make-col-offset(1);
     z-index: 1;
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        @include make-col-offset(0);
+    }
 }
 
 .section--about {
     margin-top: 400px;
     margin-bottom: 320px;
     position: relative;
+    @include media-breakpoint-down(md) {
+        margin-top: 160px;
+        margin-bottom: 160px;
+    }
 }
 
 .reveal-span {
@@ -907,6 +980,9 @@ iframe {
     object-fit: contain;
     border: none;
     z-index: 2;
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
 }
 
 .star--3d-1 {
@@ -925,6 +1001,9 @@ iframe {
     object-fit: cover;
     top: 480px;
     right: 240px;
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
 }
 
 .about-el {

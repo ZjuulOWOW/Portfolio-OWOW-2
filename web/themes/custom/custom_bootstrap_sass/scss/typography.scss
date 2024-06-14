@@ -27,7 +27,7 @@ $font-weight-normal: normal;
 $font-weight-bold: bold;
 $font-weight-base: $font-weight-normal;
 $line-height-base: 1.5;
-$h1-font-size: clamp(64px,-8px + 10vw,160px);
+$h1-font-size: clamp(32px,-8px + 10vw,160px);
 $h2-font-size: $font-size-base * 6;
 $h3-font-size: clamp(24px,-8px + 8vw, 80px);
 $h4-font-size: $font-size-base;
