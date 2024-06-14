@@ -51,7 +51,7 @@ header {
     width: 100%;
     transition: 1s transform;
     top: 0;
-    &.is-hidden{
+    &.is-hidden {
         transform: translate3d(0, calc(-100% - 32px), 0);
     }
 }
@@ -69,10 +69,28 @@ header {
     @include make-col(4);
     display: flex;
     align-items: center;
+    @include media-breakpoint-down(sm) {
+        @include make-col(6);
+    }
+}
+
+.nav-name {
+    @include media-breakpoint-down(sm) {
+        display: none;
+    }
+}
+
+.nav-cta {
+    @include media-breakpoint-down(lg) {
+        display: none !important;
+    }
 }
 
 .nav-logo {
     justify-content: center;
+    @include media-breakpoint-down(sm) {
+        justify-content: flex-start;
+    }
 }
 
 .nav-logo-link {
@@ -95,6 +113,9 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @include media-breakpoint-down(sm) {
+        @include make-col(6);
+    }
 }
 
 .nav-menu-btn {
@@ -174,29 +195,29 @@ header {
     @include media-breakpoint-down(sm) {
         width: 100vw;
     }
-    &>.row{
+    & > .row {
         width: 100%;
     }
     overflow: hidden;
 }
 
-.menu-emoji{
+.menu-emoji {
     font-style: normal;
     text-align: end;
     width: fit-content;
     padding: 0;
     opacity: 0;
-    transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     @media screen and (max-height: 800px) {
-        display: none;  
+        display: none;
     }
     @media screen and (min-height: 801px) and (max-height: 1000px) {
-        font-size: $h3-font-size; 
+        font-size: $h3-font-size;
     }
     @media screen and (min-height: 1001px) {
-        font-size: $h2-font-size; 
+        font-size: $h2-font-size;
     }
-    &.is-active{
+    &.is-active {
         opacity: 1;
     }
 }
@@ -212,7 +233,7 @@ header {
     line-height: 0.8;
     border: solid $secondary;
     border-width: 1px 0 0;
-    &:last-of-type{
+    &:last-of-type {
         border-bottom: 1px solid $secondary;
     }
 }
@@ -339,13 +360,8 @@ footer {
 // Typography
 
 h1 {
-    line-height: 144px;
     margin-bottom: 0;
-}
-
-.landing-title {
-    text-align: center;
-    z-index: 2;
+    line-height: 1;
 }
 
 h1,
@@ -527,21 +543,27 @@ section:first-of-type {
 }
 
 .landing-title {
-    &--1 {
-        align-self: flex-start;
-    }
-    &--2 {
-        align-self: flex-end;
+    z-index: 2;
+    text-align: center;
+}
+
+.landing-title--1 {
+    margin-right: 10vw;
+    @include media-breakpoint-down(md) {
+        margin-right: 0;
     }
 }
 
-.landing-titles {
-    margin: 0 80px;
+.landing-title--2 {
+    margin-left: 10vw;
+    @include media-breakpoint-down(md) {
+        margin-left: 0;
+    }
 }
 
 .title-mask {
     @include make-col-ready();
-    @include make-col(12);
+    @include make-col();
     display: flex;
     flex-direction: column;
     overflow-y: clip;
@@ -907,10 +929,6 @@ iframe {
 
 .about-el {
     position: absolute;
-}
-
-.about-text {
-    font-size: $font-size-base * 4;
 }
 
 .about-cta,

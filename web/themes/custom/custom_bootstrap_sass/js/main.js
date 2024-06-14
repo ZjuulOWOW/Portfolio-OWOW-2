@@ -59,6 +59,7 @@ menuIcon.addEventListener("click", function () {
 menuLinks.forEach((link, index) => {
     link.addEventListener("click", function () {
         menu.classList.toggle("is-active")
+        isMenuActive = !isMenuActive
         document.body.style.height = "auto"
     })
     link.addEventListener("mouseover", function () {
@@ -69,8 +70,14 @@ menuLinks.forEach((link, index) => {
     })
     link.addEventListener("mouseout", function () {
         menuEmoji.classList.remove("is-active")
-        menuHover = false;
+        menuHover = false
     })
+})
+
+const menuOverlay = document.querySelector(".menu-overlay")
+menuOverlay.addEventListener("click", function () {
+    menu.classList.remove("is-active")
+    isMenuActive = false
 })
 
 const header = document.querySelector("header")
@@ -85,22 +92,23 @@ window.addEventListener("scroll", function () {
 })
 
 function resize() {
-    const base = 3
-    const scaleFactor = 0.003
-    const newFontSize = base + window.innerWidth * scaleFactor
-    const allTitles = document.querySelectorAll("h1")
-    allTitles.forEach((title) => {
-        title.style.fontSize = `${newFontSize}rem`
-    })
     menuWidth = document
         .querySelector(".menu-content")
         .getBoundingClientRect().width
 }
 
 window.addEventListener("resize", resize)
-resize()
 
 const init = () => {
+    if (document.querySelector('[data-barba-namespace="project"]')) {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString)
+        const text = urlParams.get("fr") ? "leeswijzer" : "projecten"
+        const breadcrumb = document.getElementById("js-breadcrumb")
+        breadcrumb.innerHTML = `< Terug naar ${text}`
+        breadcrumb.href = `./${text}`
+    }
+
     resize()
 
     document.querySelector(".content").style.clipPath = "none"
